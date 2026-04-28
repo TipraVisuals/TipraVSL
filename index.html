@@ -993,5 +993,119 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      'use strict';
+
+      /* 1. NAV SCROLL */
+      var nav = document.querySelector('.nav');
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+      });
+
+      /* 2. HAMBURGER MENU */
+      var navToggle    = document.getElementById('nav-toggle');
+      var hamburgerBtn = document.querySelector('.hamburger-btn');
+      var overlay      = document.querySelector('.mobile-overlay');
+      var closeBtn     = document.querySelector('.mobile-overlay-close');
+
+      function openMenu() {
+        overlay.classList.add('open');
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        overlay.classList.remove('open');
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+        navToggle.checked = false;
+      }
+
+      hamburgerBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openMenu();
+      });
+
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        closeMenu();
+      });
+
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      /* 3. SCROLL REVEAL */
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        /* Add reveal class to additional elements */
+        ['h1', 'h2', '.card', '.stats-item', '.about-content p', '#book h2', '#book p'].forEach(function (sel) {
+          document.querySelectorAll(sel).forEach(function (el) {
+            el.classList.add('reveal');
+          });
+        });
+
+        /* Stagger cards grouped by parent */
+        var cardParents = new Map();
+        document.querySelectorAll('.card').forEach(function (card) {
+          var p = card.parentElement;
+          if (!cardParents.has(p)) cardParents.set(p, []);
+          cardParents.get(p).push(card);
+        });
+        cardParents.forEach(function (group) {
+          group.forEach(function (card, i) {
+            card.style.setProperty('--i', i);
+          });
+        });
+
+        /* Observe all .reveal elements */
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      });
+
+      /* 4. SMOOTH SCROLL */
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var id = this.getAttribute('href').slice(1);
+          var target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      /* 5. ACTIVE NAV */
+      var navLinks = document.querySelectorAll('.nav-desktop a');
+
+      var activeObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function (link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+
+      ['hero', 'work', 'clients', 'testimonials', 'about', 'book'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) activeObserver.observe(el);
+      });
+
+    }());
+  </script>
+
 </body>
 </html>
