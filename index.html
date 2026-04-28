@@ -496,6 +496,129 @@
         flex-shrink: 0;
       }
     }
+
+    /* =====================
+       TESTIMONIALS SECTION
+    ===================== */
+    .testimonials-header {
+      margin-bottom: 48px;
+    }
+
+    .testimonials-featured {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      margin-bottom: 32px;
+    }
+
+    .video-caption {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-top: 16px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .quote-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-top: 3px solid var(--gold);
+    }
+
+    .quote-card-wide {
+      grid-column: span 2;
+    }
+
+    .quote-text {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-1);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .quote-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 0;
+    }
+
+    .quote-role {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 767px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-card-wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* =====================
+       ABOUT SECTION
+    ===================== */
+    .about-header {
+      margin-bottom: 48px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--surface-2);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image span {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--surface-2);
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-em {
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    @media (max-width: 767px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -662,6 +785,77 @@
         <div class="card client-card reveal" style="--i:7">
           <p class="client-name">Josh Lyons</p>
           <p class="client-role">High Ticket Sales Coach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Their words, not mine.</h2>
+      </div>
+
+      <div class="card testimonials-featured reveal" style="--i:0">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Umh8w7480vI?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Testimonial from Camilo Castaneda"></iframe>
+        </div>
+        <p class="video-caption">Camilo Castaneda, YouTube Creator</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="card quote-card reveal" style="--i:1">
+          <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
+          <p class="quote-name">Josh Lyons</p>
+          <p class="quote-role">High Ticket Sales Coach</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:2">
+          <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
+          <p class="quote-name">Camilo Castaneda</p>
+          <p class="quote-role">YouTube Creator</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:3">
+          <p class="quote-text">"HOTTT DANGGGG SO GOOOD"</p>
+          <p class="quote-name">Nathan Udomsri</p>
+          <p class="quote-role">Founder of Lurn Lending</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:4">
+          <p class="quote-text">"Looking super clean, awesome stuff."</p>
+          <p class="quote-name">Alex Costa</p>
+          <p class="quote-role">Men's Lifestyle Creator</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:5">
+          <p class="quote-text">"Looks perfect. Love it."</p>
+          <p class="quote-name">Ruri Ohama</p>
+          <p class="quote-role">YouTube Creator</p>
+        </div>
+        <div class="card quote-card quote-card-wide reveal" style="--i:6">
+          <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
+          <p class="quote-name">Scott Millard</p>
+          <p class="quote-role">Business Owner</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-header">
+        <span class="eyebrow">About</span>
+        <h2>The editor behind the work.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image reveal" style="--i:0">
+          <span>TV</span>
+        </div>
+        <div class="about-content">
+          <p class="reveal" style="--i:1">Freelance video editor based in Mumbai, specializing in long-form YouTube content for business and finance creators.</p>
+          <p class="reveal" style="--i:2">100+ VSLs. 400+ ads. Years of obsessing over what keeps viewers watching.</p>
+          <p class="reveal" style="--i:3">I think about <span class="about-em">pacing, energy, and retention</span> on every single cut. Not just making videos look good. Making them perform.</p>
+          <p class="reveal" style="--i:4">Clients range from creators just past 10K subscribers to channels with over <span class="about-em">4 million</span>. The common thread is that they take their content seriously, and so do I.</p>
         </div>
       </div>
     </div>
