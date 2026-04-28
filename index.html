@@ -7,7 +7,7 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%23C8A97E'/><text y='.9em' font-size='60' font-family='sans-serif' font-weight='800' fill='%231A1814' x='50%' text-anchor='middle' dominant-baseline='middle' dy='5'>TV</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     /* Variables */
     :root {
@@ -34,8 +34,7 @@
     body {
       background: var(--bg);
       color: var(--text-1);
-      font-family: 'Inter', sans-serif;
-      font-feature-settings: "cv11", "ss01";
+      font-family: 'Figtree', sans-serif;
     }
 
     /* Body text defaults */
@@ -305,7 +304,8 @@
       color: var(--text-1);
     }
 
-    .hero-h1 .gold-italic {
+    .gold-italic {
+      font-family: 'DM Serif Display', serif;
       font-style: italic;
       color: var(--gold);
     }
@@ -335,6 +335,477 @@
       .hero-sub {
         margin-left: auto;
         margin-right: auto;
+      }
+    }
+
+    /* =====================
+       STATS BAR
+    ===================== */
+    .stats-bar {
+      background: var(--surface);
+      padding-block: 56px;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stats-item {
+      text-align: center;
+      padding: 32px;
+    }
+
+    .stats-item:nth-child(1),
+    .stats-item:nth-child(2),
+    .stats-item:nth-child(3) {
+      border-right: 1px solid var(--surface-2);
+    }
+
+    .stats-number {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--text-1);
+      display: block;
+    }
+
+    .stats-label {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 4px;
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-item:nth-child(1),
+      .stats-item:nth-child(2) {
+        border-bottom: 1px solid var(--surface-2);
+      }
+
+      .stats-item:nth-child(2),
+      .stats-item:nth-child(4) {
+        border-right: none;
+      }
+    }
+
+    /* =====================
+       SERVICES SECTION
+    ===================== */
+    .services-h2 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--text-1);
+    }
+
+    .services-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      margin-top: 16px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .service-card {
+      padding: 40px 36px;
+      border: 1px solid var(--surface-2);
+      background: var(--white);
+    }
+
+    .service-card:first-child {
+      border-radius: 12px 0 0 12px;
+    }
+
+    .service-card:nth-child(2) {
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    .service-card:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+
+    .service-number {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 767px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        border-radius: 0;
+        border-bottom: none;
+      }
+
+      .service-card:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      .service-card:nth-child(2) {
+        border-left: 1px solid var(--surface-2);
+        border-right: 1px solid var(--surface-2);
+      }
+
+      .service-card:last-child {
+        border-radius: 0 0 12px 12px;
+        border-bottom: 1px solid var(--surface-2);
+      }
+    }
+
+    /* =====================
+       WORK SECTION
+    ===================== */
+    .work-header {
+      margin-bottom: 48px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 767px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =====================
+       CLIENTS SECTION
+    ===================== */
+    .clients-header {
+      margin-bottom: 48px;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .client-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      min-height: 130px;
+    }
+
+    .client-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 0;
+    }
+
+    .client-role {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 4px;
+    }
+
+    .client-stat {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 767px) {
+      .clients-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+
+      .client-card {
+        scroll-snap-align: start;
+        min-width: 220px;
+        flex-shrink: 0;
+      }
+    }
+
+    /* =====================
+       TESTIMONIALS SECTION
+    ===================== */
+    .testimonials-header {
+      margin-bottom: 48px;
+    }
+
+    .testimonials-featured {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+      margin-bottom: 32px;
+    }
+
+    .video-caption {
+      font-size: 14px;
+      color: var(--text-2);
+      margin-top: 16px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .quote-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border-top: 3px solid var(--gold);
+    }
+
+    .quote-card-wide {
+      grid-column: span 2;
+    }
+
+    .quote-text {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-1);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .quote-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 0;
+    }
+
+    .quote-role {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 767px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-card-wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* =====================
+       ABOUT SECTION
+    ===================== */
+    .about-header {
+      margin-bottom: 48px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .about-image {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--surface-2);
+      aspect-ratio: 4 / 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-image span {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--surface-2);
+    }
+
+    .about-content p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-em {
+      font-weight: 500;
+      color: var(--text-1);
+    }
+
+    @media (max-width: 767px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* =====================
+       BOOK A CALL SECTION
+    ===================== */
+    #book {
+      text-align: center;
+    }
+
+    .book-sub {
+      max-width: 520px;
+      margin: 24px auto 48px;
+      font-size: 17px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    .calendly-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
+    }
+
+    @media (max-width: 767px) {
+      .calendly-wrapper {
+        padding: 16px;
+      }
+
+      .calendly-inline-widget {
+        height: 680px !important;
+      }
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: var(--text-1);
+      padding: 64px 24px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .footer-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+      margin: 0;
+    }
+
+    footer nav a {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      display: block;
+      line-height: 2.4;
+    }
+
+    footer nav a:hover {
+      color: var(--white);
+    }
+
+    footer nav a::after {
+      display: none;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: right;
+      margin: 0;
+    }
+
+    @media (max-width: 767px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-copy {
+        text-align: center;
       }
     }
   </style>
@@ -396,6 +867,363 @@
       </div>
     </div>
   </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="stats-item reveal" style="--i:0">
+          <span class="stats-number">100+</span>
+          <span class="stats-label">VSLs edited</span>
+        </div>
+        <div class="stats-item reveal" style="--i:1">
+          <span class="stats-number">400+</span>
+          <span class="stats-label">Ads produced</span>
+        </div>
+        <div class="stats-item reveal" style="--i:2">
+          <span class="stats-number">4M+</span>
+          <span class="stats-label">Subscriber reach across clients</span>
+        </div>
+        <div class="stats-item reveal" style="--i:3">
+          <span class="stats-number">5+</span>
+          <span class="stats-label">Niches served</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <span class="eyebrow">What I Offer</span>
+      <h2 class="services-h2">
+        Everything your channel<br>
+        needs to <span class="gold-italic">grow</span>
+      </h2>
+      <p class="services-sub">From raw footage to a polished upload-ready video, handled end to end.</p>
+      <div class="services-grid">
+        <div class="service-card reveal" style="--i:0">
+          <p class="service-number">01</p>
+          <p class="service-title">Long-form Editing</p>
+          <p class="service-desc">Full YouTube videos edited for maximum retention. Cuts, pacing, graphics, captions, and sound design included.</p>
+        </div>
+        <div class="service-card reveal" style="--i:1">
+          <p class="service-number">02</p>
+          <p class="service-title">VSLs and Ad Creatives</p>
+          <p class="service-desc">High-converting video sales letters and UGC ads built to stop the scroll and drive action.</p>
+        </div>
+        <div class="service-card reveal" style="--i:2">
+          <p class="service-number">03</p>
+          <p class="service-title">Short-form Clips</p>
+          <p class="service-desc">Viral-ready vertical cuts from your existing long-form content. Built for Reels, Shorts, and TikTok.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="work-header">
+        <span class="eyebrow">The Work</span>
+        <h2>Videos that retain. Edits that convert.</h2>
+      </div>
+      <div class="work-grid">
+        <div class="card video-card reveal" style="--i:0">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/ol0CV6aboqg?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 1"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:1">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/BeQNIrDkbYQ?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 2"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:2">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Ahynilr_NMc?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 3"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:3">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Bnoa6zEixnA?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 4"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:4">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/LfRywVdgq2k?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 5"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="section">
+    <div class="container">
+      <div class="clients-header">
+        <span class="eyebrow">Clients</span>
+        <h2>Editing for creators who actually move the needle.</h2>
+      </div>
+      <div class="clients-grid">
+        <div class="card client-card reveal" style="--i:0">
+          <p class="client-name">Ben Kelly</p>
+          <p class="client-role">Business Acquisitions Creator</p>
+          <p class="client-stat">166K on X</p>
+        </div>
+        <div class="card client-card reveal" style="--i:1">
+          <p class="client-name">Alex Costa</p>
+          <p class="client-role">Men's Lifestyle Creator</p>
+          <p class="client-stat">4.1M subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:2">
+          <p class="client-name">Eddie Cumberbatch</p>
+          <p class="client-role">Business and Mindset Creator</p>
+          <p class="client-stat">153K on Instagram</p>
+        </div>
+        <div class="card client-card reveal" style="--i:3">
+          <p class="client-name">Kevin Pak</p>
+          <p class="client-role">Finance Creator</p>
+          <p class="client-stat">34K subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:4">
+          <p class="client-name">Camilo Castaneda</p>
+          <p class="client-role">YouTube Creator</p>
+          <p class="client-stat">Featured client</p>
+        </div>
+        <div class="card client-card reveal" style="--i:5">
+          <p class="client-name">Jerremy Newsome</p>
+          <p class="client-role">Real Life Trading</p>
+          <p class="client-stat">22K subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:6">
+          <p class="client-name">Nathan Udomsri</p>
+          <p class="client-role">Founder, Lurn Lending</p>
+        </div>
+        <div class="card client-card reveal" style="--i:7">
+          <p class="client-name">Josh Lyons</p>
+          <p class="client-role">High Ticket Sales Coach</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Their words, not mine.</h2>
+      </div>
+
+      <div class="card testimonials-featured reveal" style="--i:0">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Umh8w7480vI?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Testimonial from Camilo Castaneda"></iframe>
+        </div>
+        <p class="video-caption">Camilo Castaneda, YouTube Creator</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="card quote-card reveal" style="--i:1">
+          <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
+          <p class="quote-name">Josh Lyons</p>
+          <p class="quote-role">High Ticket Sales Coach</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:2">
+          <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
+          <p class="quote-name">Camilo Castaneda</p>
+          <p class="quote-role">YouTube Creator</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:3">
+          <p class="quote-text">"HOTTT DANGGGG SO GOOOD"</p>
+          <p class="quote-name">Nathan Udomsri</p>
+          <p class="quote-role">Founder of Lurn Lending</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:4">
+          <p class="quote-text">"Looking super clean, awesome stuff."</p>
+          <p class="quote-name">Alex Costa</p>
+          <p class="quote-role">Men's Lifestyle Creator</p>
+        </div>
+        <div class="card quote-card reveal" style="--i:5">
+          <p class="quote-text">"Looks perfect. Love it."</p>
+          <p class="quote-name">Ruri Ohama</p>
+          <p class="quote-role">YouTube Creator</p>
+        </div>
+        <div class="card quote-card quote-card-wide reveal" style="--i:6">
+          <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
+          <p class="quote-name">Scott Millard</p>
+          <p class="quote-role">Business Owner</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="about-header">
+        <span class="eyebrow">About</span>
+        <h2>The editor behind the work.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image reveal" style="--i:0">
+          <span>TV</span>
+        </div>
+        <div class="about-content">
+          <p class="reveal" style="--i:1">Freelance video editor based in Mumbai, specializing in long-form YouTube content for business and finance creators.</p>
+          <p class="reveal" style="--i:2">100+ VSLs. 400+ ads. Years of obsessing over what keeps viewers watching.</p>
+          <p class="reveal" style="--i:3">I think about <span class="about-em">pacing, energy, and retention</span> on every single cut. Not just making videos look good. Making them perform.</p>
+          <p class="reveal" style="--i:4">Clients range from creators just past 10K subscribers to channels with over <span class="about-em">4 million</span>. The common thread is that they take their content seriously, and so do I.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book a Call -->
+  <section id="book" class="section">
+    <div class="container">
+      <span class="eyebrow">Let's Work Together</span>
+      <h2>One call. No pitch. Just clarity.</h2>
+      <p class="book-sub">If you're posting consistently and your editing isn't matching the quality of your content, let's talk. 30 minutes, no pressure.</p>
+      <div class="calendly-wrapper">
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+        <div class="calendly-inline-widget" data-url="https://calendly.com/arpitv-tip/30min" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-divider"></div>
+      <div class="footer-grid">
+        <p class="footer-brand">Tipra Visuals</p>
+        <nav>
+          <a href="#work">Work</a>
+          <a href="#clients">Clients</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#about">About</a>
+          <a href="#book">Book a Call</a>
+        </nav>
+        <p class="footer-copy">2025 Tipra Visuals. Mumbai, India.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /* 1. NAV SCROLL */
+      var nav = document.querySelector('.nav');
+      window.addEventListener('scroll', function () {
+        nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+      });
+
+      /* 2. HAMBURGER MENU */
+      var navToggle    = document.getElementById('nav-toggle');
+      var hamburgerBtn = document.querySelector('.hamburger-btn');
+      var overlay      = document.querySelector('.mobile-overlay');
+      var closeBtn     = document.querySelector('.mobile-overlay-close');
+
+      function openMenu() {
+        overlay.classList.add('open');
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        overlay.classList.remove('open');
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+        navToggle.checked = false;
+      }
+
+      hamburgerBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openMenu();
+      });
+
+      closeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        closeMenu();
+      });
+
+      overlay.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      /* 3. SCROLL REVEAL */
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        /* Add reveal class to additional elements */
+        ['h1', 'h2', '.card', '.stats-item', '.about-content p', '#book h2', '#book p'].forEach(function (sel) {
+          document.querySelectorAll(sel).forEach(function (el) {
+            el.classList.add('reveal');
+          });
+        });
+
+        /* Stagger cards grouped by parent */
+        var cardParents = new Map();
+        document.querySelectorAll('.card').forEach(function (card) {
+          var p = card.parentElement;
+          if (!cardParents.has(p)) cardParents.set(p, []);
+          cardParents.get(p).push(card);
+        });
+        cardParents.forEach(function (group) {
+          group.forEach(function (card, i) {
+            card.style.setProperty('--i', i);
+          });
+        });
+
+        /* Observe all .reveal elements */
+        document.querySelectorAll('.reveal').forEach(function (el) {
+          revealObserver.observe(el);
+        });
+      });
+
+      /* 4. SMOOTH SCROLL */
+      document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var id = this.getAttribute('href').slice(1);
+          var target = document.getElementById(id);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      /* 5. ACTIVE NAV */
+      var navLinks = document.querySelectorAll('.nav-desktop a');
+
+      var activeObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function (link) {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+
+      ['hero', 'work', 'clients', 'testimonials', 'about', 'book'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) activeObserver.observe(el);
+      });
+
+    }());
+  </script>
 
 </body>
 </html>
