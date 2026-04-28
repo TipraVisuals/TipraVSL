@@ -688,7 +688,6 @@
       font-weight: 500;
       color: var(--text-1);
       line-height: 1.5;
-      margin-bottom: 20px;
     }
 
     .quote-name {
@@ -702,6 +701,22 @@
       font-size: 13px;
       color: var(--text-2);
       margin-top: 2px;
+    }
+
+    .quote-attribution {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .quote-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--surface);
+      flex-shrink: 0;
     }
 
     @media (max-width: 767px) {
@@ -948,33 +963,63 @@
       <div class="testimonials-grid">
         <div class="card quote-card reveal" style="--i:1">
           <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
-          <p class="quote-name">Josh Lyons</p>
-          <p class="quote-role">High Ticket Sales Coach</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/joshlyons" alt="Josh Lyons" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Josh Lyons</p>
+              <p class="quote-role">High Ticket Sales Coach</p>
+            </div>
+          </div>
         </div>
         <div class="card quote-card reveal" style="--i:2">
           <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
-          <p class="quote-name">Camilo Castaneda</p>
-          <p class="quote-role">YouTube Creator</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/camilocastaneda" alt="Camilo Castaneda" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Camilo Castaneda</p>
+              <p class="quote-role">YouTube Creator</p>
+            </div>
+          </div>
         </div>
         <div class="card quote-card reveal" style="--i:3">
           <p class="quote-text">"HOTTT DANGGGG SO GOOOD"</p>
-          <p class="quote-name">Nathan Udomsri</p>
-          <p class="quote-role">Founder of Lurn Lending</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/nathanudomsri" alt="Nathan Udomsri" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Nathan Udomsri</p>
+              <p class="quote-role">Founder of Lurn Lending</p>
+            </div>
+          </div>
         </div>
         <div class="card quote-card reveal" style="--i:4">
           <p class="quote-text">"Looking super clean, awesome stuff."</p>
-          <p class="quote-name">Alex Costa</p>
-          <p class="quote-role">Men's Lifestyle Creator</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/alexcosta" alt="Alex Costa" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Alex Costa</p>
+              <p class="quote-role">Men's Lifestyle Creator</p>
+            </div>
+          </div>
         </div>
         <div class="card quote-card reveal" style="--i:5">
           <p class="quote-text">"Looks perfect. Love it."</p>
-          <p class="quote-name">Ruri Ohama</p>
-          <p class="quote-role">YouTube Creator</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/ruriohamaofficial" alt="Ruri Ohama" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Ruri Ohama</p>
+              <p class="quote-role">YouTube Creator</p>
+            </div>
+          </div>
         </div>
         <div class="card quote-card quote-card-wide reveal" style="--i:6">
           <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
-          <p class="quote-name">Scott Millard</p>
-          <p class="quote-role">Business Owner</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/scottmillard" alt="Scott Millard" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Scott Millard</p>
+              <p class="quote-role">Business Owner</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
