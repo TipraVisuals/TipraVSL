@@ -400,6 +400,95 @@
     }
 
     /* =====================
+       SERVICES SECTION
+    ===================== */
+    .services-h2 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--text-1);
+    }
+
+    .services-sub {
+      font-size: 16px;
+      color: var(--text-2);
+      margin-top: 16px;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .service-card {
+      padding: 40px 36px;
+      border: 1px solid var(--surface-2);
+      background: var(--white);
+    }
+
+    .service-card:first-child {
+      border-radius: 12px 0 0 12px;
+    }
+
+    .service-card:nth-child(2) {
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
+
+    .service-card:last-child {
+      border-radius: 0 12px 12px 0;
+    }
+
+    .service-number {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 767px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-card {
+        border-radius: 0;
+        border-bottom: none;
+      }
+
+      .service-card:first-child {
+        border-radius: 12px 12px 0 0;
+      }
+
+      .service-card:nth-child(2) {
+        border-left: 1px solid var(--surface-2);
+        border-right: 1px solid var(--surface-2);
+      }
+
+      .service-card:last-child {
+        border-radius: 0 0 12px 12px;
+        border-bottom: 1px solid var(--surface-2);
+      }
+    }
+
+    /* =====================
        WORK SECTION
     ===================== */
     .work-header {
@@ -802,6 +891,35 @@
       </div>
     </div>
   </div>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="container">
+      <span class="eyebrow">What I Offer</span>
+      <h2 class="services-h2">
+        Everything your channel<br>
+        needs to <span class="gold-italic">grow</span>
+      </h2>
+      <p class="services-sub">From raw footage to a polished upload-ready video, handled end to end.</p>
+      <div class="services-grid">
+        <div class="service-card reveal" style="--i:0">
+          <p class="service-number">01</p>
+          <p class="service-title">Long-form Editing</p>
+          <p class="service-desc">Full YouTube videos edited for maximum retention. Cuts, pacing, graphics, captions, and sound design included.</p>
+        </div>
+        <div class="service-card reveal" style="--i:1">
+          <p class="service-number">02</p>
+          <p class="service-title">VSLs and Ad Creatives</p>
+          <p class="service-desc">High-converting video sales letters and UGC ads built to stop the scroll and drive action.</p>
+        </div>
+        <div class="service-card reveal" style="--i:2">
+          <p class="service-number">03</p>
+          <p class="service-title">Short-form Clips</p>
+          <p class="service-desc">Viral-ready vertical cuts from your existing long-form content. Built for Reels, Shorts, and TikTok.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Work -->
   <section id="work" class="section">
