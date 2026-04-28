@@ -337,6 +337,165 @@
         margin-right: auto;
       }
     }
+
+    /* =====================
+       STATS BAR
+    ===================== */
+    .stats-bar {
+      background: var(--surface);
+      padding-block: 56px;
+    }
+
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stats-item {
+      text-align: center;
+      padding: 32px;
+    }
+
+    .stats-item:nth-child(1),
+    .stats-item:nth-child(2),
+    .stats-item:nth-child(3) {
+      border-right: 1px solid var(--surface-2);
+    }
+
+    .stats-number {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      color: var(--text-1);
+      display: block;
+    }
+
+    .stats-label {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 4px;
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stats-item:nth-child(1),
+      .stats-item:nth-child(2) {
+        border-bottom: 1px solid var(--surface-2);
+      }
+
+      .stats-item:nth-child(2),
+      .stats-item:nth-child(4) {
+        border-right: none;
+      }
+    }
+
+    /* =====================
+       WORK SECTION
+    ===================== */
+    .work-header {
+      margin-bottom: 48px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-top: 56.25%;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 767px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* =====================
+       CLIENTS SECTION
+    ===================== */
+    .clients-header {
+      margin-bottom: 48px;
+    }
+
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .client-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      min-height: 130px;
+    }
+
+    .client-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-1);
+      margin: 0;
+    }
+
+    .client-role {
+      font-size: 13px;
+      color: var(--text-2);
+      margin-top: 4px;
+    }
+
+    .client-stat {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 767px) {
+      .clients-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 16px;
+        padding-bottom: 16px;
+      }
+
+      .client-card {
+        scroll-snap-align: start;
+        min-width: 220px;
+        flex-shrink: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -393,6 +552,117 @@
         <p class="hero-sub">I edit long-form YouTube content for business and finance creators who are serious about growth.</p>
         <a href="#book" class="btn-primary hero-cta">Book a free call</a>
         <p class="hero-proof">Trusted by creators with 4M+ YouTube subscribers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stats-grid">
+        <div class="stats-item reveal" style="--i:0">
+          <span class="stats-number">100+</span>
+          <span class="stats-label">VSLs edited</span>
+        </div>
+        <div class="stats-item reveal" style="--i:1">
+          <span class="stats-number">400+</span>
+          <span class="stats-label">Ads produced</span>
+        </div>
+        <div class="stats-item reveal" style="--i:2">
+          <span class="stats-number">4M+</span>
+          <span class="stats-label">Subscriber reach across clients</span>
+        </div>
+        <div class="stats-item reveal" style="--i:3">
+          <span class="stats-number">5+</span>
+          <span class="stats-label">Niches served</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Work -->
+  <section id="work" class="section">
+    <div class="container">
+      <div class="work-header">
+        <span class="eyebrow">The Work</span>
+        <h2>Videos that retain. Edits that convert.</h2>
+      </div>
+      <div class="work-grid">
+        <div class="card video-card reveal" style="--i:0">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/ol0CV6aboqg?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 1"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:1">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/BeQNIrDkbYQ?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 2"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:2">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Ahynilr_NMc?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 3"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:3">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/Bnoa6zEixnA?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 4"></iframe>
+          </div>
+        </div>
+        <div class="card video-card reveal" style="--i:4">
+          <div class="video-wrapper">
+            <iframe src="https://www.youtube.com/embed/LfRywVdgq2k?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Work sample 5"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="section">
+    <div class="container">
+      <div class="clients-header">
+        <span class="eyebrow">Clients</span>
+        <h2>Editing for creators who actually move the needle.</h2>
+      </div>
+      <div class="clients-grid">
+        <div class="card client-card reveal" style="--i:0">
+          <p class="client-name">Ben Kelly</p>
+          <p class="client-role">Business Acquisitions Creator</p>
+          <p class="client-stat">166K on X</p>
+        </div>
+        <div class="card client-card reveal" style="--i:1">
+          <p class="client-name">Alex Costa</p>
+          <p class="client-role">Men's Lifestyle Creator</p>
+          <p class="client-stat">4.1M subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:2">
+          <p class="client-name">Eddie Cumberbatch</p>
+          <p class="client-role">Business and Mindset Creator</p>
+          <p class="client-stat">153K on Instagram</p>
+        </div>
+        <div class="card client-card reveal" style="--i:3">
+          <p class="client-name">Kevin Pak</p>
+          <p class="client-role">Finance Creator</p>
+          <p class="client-stat">34K subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:4">
+          <p class="client-name">Camilo Castaneda</p>
+          <p class="client-role">YouTube Creator</p>
+          <p class="client-stat">Featured client</p>
+        </div>
+        <div class="card client-card reveal" style="--i:5">
+          <p class="client-name">Jerremy Newsome</p>
+          <p class="client-role">Real Life Trading</p>
+          <p class="client-stat">22K subscribers</p>
+        </div>
+        <div class="card client-card reveal" style="--i:6">
+          <p class="client-name">Nathan Udomsri</p>
+          <p class="client-role">Founder, Lurn Lending</p>
+        </div>
+        <div class="card client-card reveal" style="--i:7">
+          <p class="client-name">Josh Lyons</p>
+          <p class="client-role">High Ticket Sales Coach</p>
+        </div>
       </div>
     </div>
   </section>
