@@ -15,8 +15,8 @@
       --surface: #EDEAE4;
       --surface-2: #E3E0D9;
       --text-1: #1A1814;
-      --text-2: #6B6560;
-      --gold: #C8A97E;
+      --text-2: #4A4540;
+      --gold: #BF7A38;
       --white: #FFFFFF;
     }
 
@@ -289,11 +289,69 @@
     #hero {
       min-height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .hero-content {
       text-align: left;
+      width: 100%;
+    }
+
+    .hero-reel {
+      width: 100%;
+      margin-top: 56px;
+      background: var(--text-1);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      padding-top: 56.25%;
+    }
+
+    .hero-reel-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .hero-reel-play {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-reel-play::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9px 0 9px 18px;
+      border-color: transparent transparent transparent rgba(255, 255, 255, 0.65);
+      margin-left: 4px;
+    }
+
+    .hero-reel-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.32);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 767px) {
+      .hero-reel {
+        border-radius: 12px;
+        margin-top: 40px;
+      }
     }
 
     .hero-h1 {
@@ -630,7 +688,6 @@
       font-weight: 500;
       color: var(--text-1);
       line-height: 1.5;
-      margin-bottom: 20px;
     }
 
     .quote-name {
@@ -646,6 +703,22 @@
       margin-top: 2px;
     }
 
+    .quote-attribution {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .quote-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+
     @media (max-width: 767px) {
       .testimonials-grid {
         grid-template-columns: 1fr;
@@ -653,59 +726,6 @@
 
       .quote-card-wide {
         grid-column: span 1;
-      }
-    }
-
-    /* =====================
-       ABOUT SECTION
-    ===================== */
-    .about-header {
-      margin-bottom: 48px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .about-image {
-      background: var(--surface);
-      border-radius: 16px;
-      border: 1px solid var(--surface-2);
-      aspect-ratio: 4 / 5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-image span {
-      font-size: 48px;
-      font-weight: 800;
-      color: var(--surface-2);
-    }
-
-    .about-content p {
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: var(--text-2);
-      line-height: 1.8;
-    }
-
-    .about-content p:last-child {
-      margin-bottom: 0;
-    }
-
-    .about-em {
-      font-weight: 500;
-      color: var(--text-1);
-    }
-
-    @media (max-width: 767px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
       }
     }
 
@@ -821,7 +841,6 @@
     <a href="#work">Work</a>
     <a href="#clients">Clients</a>
     <a href="#testimonials">Testimonials</a>
-    <a href="#about">About</a>
     <a href="#book">Book a call</a>
   </div>
 
@@ -837,7 +856,6 @@
           <a href="#work">Work</a>
           <a href="#clients">Clients</a>
           <a href="#testimonials">Testimonials</a>
-          <a href="#about">About</a>
           <a href="#book" class="btn-primary">Book a call</a>
         </div>
 
@@ -864,6 +882,12 @@
         <p class="hero-sub">I edit long-form YouTube content for business and finance creators who are serious about growth.</p>
         <a href="#book" class="btn-primary hero-cta">Book a free call</a>
         <p class="hero-proof">Trusted by creators with 4M+ YouTube subscribers</p>
+      </div>
+      <div class="hero-reel">
+        <div class="hero-reel-inner">
+          <div class="hero-reel-play"></div>
+          <p class="hero-reel-label">showreel</p>
+        </div>
       </div>
     </div>
   </section>
@@ -916,6 +940,86 @@
           <p class="service-number">03</p>
           <p class="service-title">Short-form Clips</p>
           <p class="service-desc">Viral-ready vertical cuts from your existing long-form content. Built for Reels, Shorts, and TikTok.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="section">
+    <div class="container">
+      <div class="testimonials-header">
+        <span class="eyebrow">What Clients Say</span>
+        <h2>Their words, not mine.</h2>
+      </div>
+
+      <div class="card testimonials-featured reveal" style="--i:0">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/Umh8w7480vI?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Testimonial from Camilo Castaneda"></iframe>
+        </div>
+        <p class="video-caption">Camilo Castaneda, YouTube Creator</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="card quote-card reveal" style="--i:1">
+          <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/joshlyons" alt="Josh Lyons" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Josh Lyons</p>
+              <p class="quote-role">High Ticket Sales Coach</p>
+            </div>
+          </div>
+        </div>
+        <div class="card quote-card reveal" style="--i:2">
+          <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/camilocastaneda" alt="Camilo Castaneda" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Camilo Castaneda</p>
+              <p class="quote-role">YouTube Creator</p>
+            </div>
+          </div>
+        </div>
+        <div class="card quote-card reveal" style="--i:3">
+          <p class="quote-text">"HOTTT DANGGGG SO GOOOD"</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/nathanudomsri" alt="Nathan Udomsri" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Nathan Udomsri</p>
+              <p class="quote-role">Founder of Lurn Lending</p>
+            </div>
+          </div>
+        </div>
+        <div class="card quote-card reveal" style="--i:4">
+          <p class="quote-text">"Looking super clean, awesome stuff."</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/alexcosta" alt="Alex Costa" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Alex Costa</p>
+              <p class="quote-role">Men's Lifestyle Creator</p>
+            </div>
+          </div>
+        </div>
+        <div class="card quote-card reveal" style="--i:5">
+          <p class="quote-text">"Looks perfect. Love it."</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/ruriohamaofficial" alt="Ruri Ohama" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Ruri Ohama</p>
+              <p class="quote-role">YouTube Creator</p>
+            </div>
+          </div>
+        </div>
+        <div class="card quote-card quote-card-wide reveal" style="--i:6">
+          <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
+          <div class="quote-attribution">
+            <img class="quote-avatar" src="https://unavatar.io/twitter/scottmillard" alt="Scott Millard" onerror="this.style.display='none'">
+            <div>
+              <p class="quote-name">Scott Millard</p>
+              <p class="quote-role">Business Owner</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1008,77 +1112,6 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials" class="section">
-    <div class="container">
-      <div class="testimonials-header">
-        <span class="eyebrow">What Clients Say</span>
-        <h2>Their words, not mine.</h2>
-      </div>
-
-      <div class="card testimonials-featured reveal" style="--i:0">
-        <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/Umh8w7480vI?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Testimonial from Camilo Castaneda"></iframe>
-        </div>
-        <p class="video-caption">Camilo Castaneda, YouTube Creator</p>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="card quote-card reveal" style="--i:1">
-          <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
-          <p class="quote-name">Josh Lyons</p>
-          <p class="quote-role">High Ticket Sales Coach</p>
-        </div>
-        <div class="card quote-card reveal" style="--i:2">
-          <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
-          <p class="quote-name">Camilo Castaneda</p>
-          <p class="quote-role">YouTube Creator</p>
-        </div>
-        <div class="card quote-card reveal" style="--i:3">
-          <p class="quote-text">"HOTTT DANGGGG SO GOOOD"</p>
-          <p class="quote-name">Nathan Udomsri</p>
-          <p class="quote-role">Founder of Lurn Lending</p>
-        </div>
-        <div class="card quote-card reveal" style="--i:4">
-          <p class="quote-text">"Looking super clean, awesome stuff."</p>
-          <p class="quote-name">Alex Costa</p>
-          <p class="quote-role">Men's Lifestyle Creator</p>
-        </div>
-        <div class="card quote-card reveal" style="--i:5">
-          <p class="quote-text">"Looks perfect. Love it."</p>
-          <p class="quote-name">Ruri Ohama</p>
-          <p class="quote-role">YouTube Creator</p>
-        </div>
-        <div class="card quote-card quote-card-wide reveal" style="--i:6">
-          <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
-          <p class="quote-name">Scott Millard</p>
-          <p class="quote-role">Business Owner</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="about-header">
-        <span class="eyebrow">About</span>
-        <h2>The editor behind the work.</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-image reveal" style="--i:0">
-          <span>TV</span>
-        </div>
-        <div class="about-content">
-          <p class="reveal" style="--i:1">Freelance video editor based in Mumbai, specializing in long-form YouTube content for business and finance creators.</p>
-          <p class="reveal" style="--i:2">100+ VSLs. 400+ ads. Years of obsessing over what keeps viewers watching.</p>
-          <p class="reveal" style="--i:3">I think about <span class="about-em">pacing, energy, and retention</span> on every single cut. Not just making videos look good. Making them perform.</p>
-          <p class="reveal" style="--i:4">Clients range from creators just past 10K subscribers to channels with over <span class="about-em">4 million</span>. The common thread is that they take their content seriously, and so do I.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Book a Call -->
   <section id="book" class="section">
     <div class="container">
@@ -1103,10 +1136,9 @@
           <a href="#work">Work</a>
           <a href="#clients">Clients</a>
           <a href="#testimonials">Testimonials</a>
-          <a href="#about">About</a>
           <a href="#book">Book a Call</a>
         </nav>
-        <p class="footer-copy">2025 Tipra Visuals. Mumbai, India.</p>
+        <p class="footer-copy">2025 Tipra Visuals.</p>
       </div>
     </div>
   </footer>
@@ -1217,7 +1249,7 @@
         });
       }, { threshold: 0.4 });
 
-      ['hero', 'work', 'clients', 'testimonials', 'about', 'book'].forEach(function (id) {
+      ['hero', 'services', 'testimonials', 'work', 'clients', 'book'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) activeObserver.observe(el);
       });
