@@ -105,7 +105,7 @@
     /* Primary button */
     .btn-primary {
       background: var(--text-1);
-      color: var(--white);
+      color: #FFFFFF;
       border: none;
       border-radius: 100px;
       padding: 14px 32px;
@@ -160,12 +160,17 @@
       top: 0;
       z-index: 100;
       padding: 20px 0;
+      background: rgba(245, 243, 239, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       transition: background 0.3s ease;
     }
 
     .nav-scrolled {
-      background: var(--bg);
-      border-bottom: 1px solid var(--surface-2);
+      background: rgba(245, 243, 239, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     .nav-inner {
