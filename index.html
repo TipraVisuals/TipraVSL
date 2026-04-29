@@ -11,12 +11,12 @@
   <style>
     /* Variables */
     :root {
-      --bg: #F5F3EF;
-      --surface: #EDEAE4;
-      --surface-2: #E3E0D9;
-      --text-1: #1A1814;
-      --text-2: #4A4540;
-      --gold: #BF7A38;
+      --bg: oklch(98% 0.008 80);
+      --surface: oklch(96% 0.01 75);
+      --surface-2: oklch(90% 0.012 75);
+      --text-1: oklch(12% 0.01 80);
+      --text-2: oklch(42% 0.01 80);
+      --gold: oklch(60% 0.12 45);
       --white: #FFFFFF;
     }
 
@@ -104,10 +104,10 @@
 
     /* Primary button */
     .btn-primary {
-      background: var(--gold);
-      color: #1A1814;
+      background: var(--text-1);
+      color: var(--white);
       border: none;
-      border-radius: 6px;
+      border-radius: 100px;
       padding: 14px 32px;
       font-weight: 700;
       font-size: 15px;
@@ -734,13 +734,18 @@
     ===================== */
     #book {
       text-align: center;
+      background: var(--text-1);
+    }
+
+    #book h2 {
+      color: var(--white);
     }
 
     .book-sub {
       max-width: 520px;
       margin: 24px auto 48px;
       font-size: 17px;
-      color: var(--text-2);
+      color: rgba(255, 255, 255, 0.6);
       line-height: 1.7;
     }
 
@@ -838,10 +843,10 @@
   <!-- Mobile overlay menu -->
   <div class="mobile-overlay">
     <label for="nav-toggle" class="mobile-overlay-close" aria-label="Close menu">&#x2715;</label>
+    <a href="#services">Services</a>
     <a href="#work">Work</a>
-    <a href="#clients">Clients</a>
-    <a href="#testimonials">Testimonials</a>
-    <a href="#book">Book a call</a>
+    <a href="#testimonials">Results</a>
+    <a href="#book">Book a free call</a>
   </div>
 
   <!-- Navigation -->
@@ -849,14 +854,14 @@
     <div class="container">
       <div class="nav-inner">
 
-        <a href="#hero" class="nav-logo">Tipra Visuals</a>
+        <a href="#hero" class="nav-logo">Tipra</a>
 
         <!-- Desktop links -->
         <div class="nav-desktop">
+          <a href="#services">Services</a>
           <a href="#work">Work</a>
-          <a href="#clients">Clients</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#book" class="btn-primary">Book a call</a>
+          <a href="#testimonials">Results</a>
+          <a href="#book" class="btn-primary">Book a free call</a>
         </div>
 
         <!-- Hamburger toggle (mobile only) -->
@@ -935,7 +940,7 @@
         <div class="card quote-card reveal" style="--i:1">
           <p class="quote-text">"Love what you did with the edit. The visuals, animations, sfx, etc."</p>
           <div class="quote-attribution">
-            <img class="quote-avatar" src="https://unavatar.io/twitter/joshlyons" alt="Josh Lyons" onerror="this.style.display='none'">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/joshlyons_sales" alt="Josh Lyons" onerror="this.style.display='none'">
             <div>
               <p class="quote-name">Josh Lyons</p>
               <p class="quote-role">High Ticket Sales Coach</p>
@@ -945,7 +950,7 @@
         <div class="card quote-card reveal" style="--i:2">
           <p class="quote-text">"wtf. that's crazy. omg the color grading. DONT GASS ME UP"</p>
           <div class="quote-attribution">
-            <img class="quote-avatar" src="https://unavatar.io/youtube/camilocastaneda" alt="Camilo Castaneda" onerror="this.style.display='none'">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/camicees" alt="Camilo Castaneda" onerror="this.style.display='none'">
             <div>
               <p class="quote-name">Camilo Castaneda</p>
               <p class="quote-role">YouTube Creator</p>
@@ -985,7 +990,7 @@
         <div class="card quote-card quote-card-wide reveal" style="--i:6">
           <p class="quote-text">"You are crazy bro lmao, you're like better than a full time US team member working with me in person."</p>
           <div class="quote-attribution">
-            <img class="quote-avatar" src="https://unavatar.io/twitter/scottmillard" alt="Scott Millard" onerror="this.style.display='none'">
+            <img class="quote-avatar" src="https://unavatar.io/youtube/scottmillard" alt="Scott Millard" onerror="this.style.display='none'">
             <div>
               <p class="quote-name">Scott Millard</p>
               <p class="quote-role">Business Owner</p>
@@ -1138,10 +1143,10 @@
       <div class="footer-grid">
         <p class="footer-brand">Tipra Visuals</p>
         <nav>
+          <a href="#services">Services</a>
           <a href="#work">Work</a>
-          <a href="#clients">Clients</a>
-          <a href="#testimonials">Testimonials</a>
-          <a href="#book">Book a Call</a>
+          <a href="#testimonials">Results</a>
+          <a href="#book">Book a free call</a>
         </nav>
         <p class="footer-copy">2025 Tipra Visuals.</p>
       </div>
@@ -1254,7 +1259,7 @@
         });
       }, { threshold: 0.4 });
 
-      ['hero', 'services', 'testimonials', 'work', 'clients', 'book'].forEach(function (id) {
+      ['hero', 'services', 'work', 'testimonials', 'book'].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) activeObserver.observe(el);
       });
