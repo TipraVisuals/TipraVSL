@@ -491,7 +491,15 @@
     .service-card {
       padding: 40px 36px;
       border: 1px solid var(--surface-2);
+      border-left: 2px solid transparent;
       background: var(--white);
+      cursor: default;
+      transition: background 0.3s ease, border-left-color 0.3s ease;
+    }
+
+    .service-card:hover {
+      background: rgba(200, 169, 126, 0.08);
+      border-left-color: var(--gold);
     }
 
     .service-card:first-child {
