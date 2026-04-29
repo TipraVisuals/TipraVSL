@@ -419,10 +419,8 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      max-width: 720px;
-      margin: 0 auto;
     }
 
     .stats-item {
@@ -431,7 +429,8 @@
     }
 
     .stats-item:nth-child(1),
-    .stats-item:nth-child(2) {
+    .stats-item:nth-child(2),
+    .stats-item:nth-child(3) {
       border-right: 1px solid var(--surface-2);
     }
 
@@ -459,7 +458,8 @@
         border-bottom: 1px solid var(--surface-2);
       }
 
-      .stats-item:nth-child(2) {
+      .stats-item:nth-child(2),
+      .stats-item:nth-child(4) {
         border-right: none;
       }
     }
@@ -960,7 +960,7 @@
     <div class="stats-inner">
       <div class="stats-grid">
         <div class="stats-item reveal" style="--i:0">
-          <span class="stats-number">100+</span>
+          <span class="stats-number">50+</span>
           <span class="stats-label">VSLs edited</span>
         </div>
         <div class="stats-item reveal" style="--i:1">
@@ -970,6 +970,10 @@
         <div class="stats-item reveal" style="--i:2">
           <span class="stats-number">30M+</span>
           <span class="stats-label">Views Gained</span>
+        </div>
+        <div class="stats-item reveal" style="--i:3">
+          <span class="stats-number">100+</span>
+          <span class="stats-label">Long Forms Edited</span>
         </div>
       </div>
     </div>
