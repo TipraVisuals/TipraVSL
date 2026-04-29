@@ -615,11 +615,30 @@
       min-height: 130px;
     }
 
+    .client-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--surface);
+      margin-bottom: 12px;
+      display: block;
+    }
+
     .client-name {
       font-size: 15px;
       font-weight: 700;
       color: var(--text-1);
       margin: 0;
+    }
+
+    .client-name a {
+      color: var(--text-1);
+      text-decoration: none;
+    }
+
+    .client-name a:hover {
+      color: var(--gold);
     }
 
     .client-role {
@@ -1083,41 +1102,49 @@
       </div>
       <div class="clients-grid">
         <div class="card client-card reveal" style="--i:0">
-          <p class="client-name">Ben Kelly</p>
+          <img class="client-avatar" src="https://unavatar.io/twitter/benkellyone" alt="Ben Kelly" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://twitter.com/benkellyone" target="_blank" rel="noopener">Ben Kelly</a></p>
           <p class="client-role">Business Acquisitions Creator</p>
           <p class="client-stat">166K on X</p>
         </div>
         <div class="card client-card reveal" style="--i:1">
-          <p class="client-name">Alex Costa</p>
+          <img class="client-avatar" src="https://unavatar.io/youtube/alexcosta" alt="Alex Costa" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.youtube.com/@alexcosta" target="_blank" rel="noopener">Alex Costa</a></p>
           <p class="client-role">Men's Lifestyle Creator</p>
           <p class="client-stat">4.1M subscribers</p>
         </div>
         <div class="card client-card reveal" style="--i:2">
-          <p class="client-name">Eddie Cumberbatch</p>
+          <img class="client-avatar" src="https://unavatar.io/instagram/eddiecumberbatch" alt="Eddie Cumberbatch" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.instagram.com/eddiecumberbatch" target="_blank" rel="noopener">Eddie Cumberbatch</a></p>
           <p class="client-role">Business and Mindset Creator</p>
           <p class="client-stat">153K on Instagram</p>
         </div>
         <div class="card client-card reveal" style="--i:3">
-          <p class="client-name">Kevin Pak</p>
+          <img class="client-avatar" src="https://unavatar.io/youtube/KevinPak" alt="Kevin Pak" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.youtube.com/c/KevinPak" target="_blank" rel="noopener">Kevin Pak</a></p>
           <p class="client-role">Finance Creator</p>
           <p class="client-stat">34K subscribers</p>
         </div>
         <div class="card client-card reveal" style="--i:4">
-          <p class="client-name">Camilo Castaneda</p>
+          <img class="client-avatar" src="https://unavatar.io/youtube/camicees" alt="Camilo Castaneda" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.youtube.com/@camicees" target="_blank" rel="noopener">Camilo Castaneda</a></p>
           <p class="client-role">YouTube Creator</p>
           <p class="client-stat">Featured client</p>
         </div>
         <div class="card client-card reveal" style="--i:5">
-          <p class="client-name">Jerremy Newsome</p>
+          <img class="client-avatar" src="https://unavatar.io/twitter/jerremynewsome" alt="Jerremy Newsome" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.youtube.com/channel/UCPPNysg5PvYuJjkp8q7RxOQ" target="_blank" rel="noopener">Jerremy Newsome</a></p>
           <p class="client-role">Real Life Trading</p>
           <p class="client-stat">22K subscribers</p>
         </div>
         <div class="card client-card reveal" style="--i:6">
-          <p class="client-name">Nathan Udomsri</p>
+          <img class="client-avatar" src="https://unavatar.io/twitter/nathanudomsri" alt="Nathan Udomsri" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://twitter.com/nathanudomsri" target="_blank" rel="noopener">Nathan Udomsri</a></p>
           <p class="client-role">Founder, Lurn Lending</p>
         </div>
         <div class="card client-card reveal" style="--i:7">
-          <p class="client-name">Josh Lyons</p>
+          <img class="client-avatar" src="https://unavatar.io/youtube/joshlyons_sales" alt="Josh Lyons" onerror="this.style.display='none'">
+          <p class="client-name"><a href="https://www.youtube.com/@joshlyons_sales" target="_blank" rel="noopener">Josh Lyons</a></p>
           <p class="client-role">High Ticket Sales Coach</p>
         </div>
       </div>
