@@ -39,26 +39,9 @@
     }
 
     body {
-      background:
-        radial-gradient(1200px 600px at 12% -5%, oklch(93% 0.035 70 / 0.9), transparent 60%),
-        radial-gradient(1000px 500px at 92% 15%, oklch(91% 0.045 55 / 0.7), transparent 55%),
-        linear-gradient(165deg, oklch(95% 0.02 80), oklch(89% 0.028 70));
-      background-attachment: fixed;
+      background: var(--bg);
       color: var(--text-1);
       font-family: 'Figtree', sans-serif;
-      padding: clamp(10px, 2vw, 28px);
-    }
-
-    /* Floating page frame */
-    .page-frame {
-      max-width: 1500px;
-      margin: 0 auto;
-      background: var(--bg);
-      border-radius: clamp(16px, 2.5vw, 32px);
-      overflow: clip;
-      box-shadow:
-        0 40px 100px rgba(26, 24, 20, 0.18),
-        0 0 0 1px rgba(255, 255, 255, 0.55);
     }
 
     /* Body text defaults */
@@ -70,15 +53,30 @@
       color: var(--text-2);
     }
 
-    /* Eyebrow label */
+    /* Eyebrow label — badge pill */
     .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--surface-2);
+      border-radius: 100px;
+      padding: 8px 18px;
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold);
-      display: block;
-      margin-bottom: 12px;
+      color: var(--text-2);
+      box-shadow: 0 2px 10px rgba(26, 24, 20, 0.06);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
     }
 
     /* Section headings */
@@ -174,6 +172,19 @@
     .dot-grid {
       background-image: radial-gradient(circle, rgba(26, 24, 20, 0.06) 1px, transparent 1px);
       background-size: 28px 28px;
+    }
+
+    /* Ambient warm glows per section */
+    #testimonials {
+      background: radial-gradient(700px 380px at 92% 8%, oklch(60% 0.12 45 / 0.07), transparent 70%);
+    }
+
+    #work {
+      background: radial-gradient(700px 380px at 8% 12%, oklch(60% 0.12 45 / 0.07), transparent 70%);
+    }
+
+    #services {
+      background: radial-gradient(700px 380px at 90% 88%, oklch(60% 0.12 45 / 0.06), transparent 70%);
     }
 
     /* =====================
@@ -332,31 +343,6 @@
       margin: 0 auto;
       position: relative;
       z-index: 2;
-    }
-
-    /* Badge pill above headline */
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      border: 1px solid var(--surface-2);
-      border-radius: 100px;
-      padding: 8px 18px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-2);
-      box-shadow: 0 2px 10px rgba(26, 24, 20, 0.06);
-      margin-bottom: 28px;
-    }
-
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
     }
 
     /* Overlapping avatar stack */
@@ -1095,9 +1081,6 @@
     <a href="#book">Book a free call</a>
   </div>
 
-  <!-- Floating page frame -->
-  <div class="page-frame">
-
   <!-- Navigation -->
   <nav class="nav">
     <div class="container">
@@ -1155,7 +1138,7 @@
 
     <div class="container">
       <div class="hero-content">
-        <span class="hero-badge"><span class="badge-dot"></span>Premium YouTube Editing</span>
+        <span class="eyebrow">Premium YouTube Editing</span>
         <h1 class="hero-h1">
           Editing that makes<br>
           creators <span class="gold-italic">impossible</span> to ignore.
@@ -1467,8 +1450,6 @@
       </div>
     </div>
   </footer>
-
-  </div><!-- /page-frame -->
 
   <script>
     (function () {
