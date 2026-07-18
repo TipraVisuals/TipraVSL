@@ -97,6 +97,48 @@
 
     .section {
       padding-block: min(140px, 14vw);
+      position: relative;
+    }
+
+    .section > .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Ghost section titles */
+    .section-ghost {
+      position: absolute;
+      top: clamp(16px, 3.5vw, 40px);
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(72px, 15vw, 190px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(26, 24, 20, 0.07);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+    }
+
+    #book .section-ghost {
+      -webkit-text-stroke-color: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      z-index: 300;
+      pointer-events: none;
     }
 
     /* Reveal animation classes (JS will add .visible) */
@@ -1030,52 +1072,6 @@
       color: var(--white);
     }
 
-    /* =====================
-       MARQUEE
-    ===================== */
-    .marquee {
-      overflow: hidden;
-      border-block: 1px solid var(--surface-2);
-      background: var(--white);
-      padding: 20px 0;
-    }
-
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marquee 30s linear infinite;
-    }
-
-    .marquee-group {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      padding-right: 40px;
-    }
-
-    .marquee-group span {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-2);
-      white-space: nowrap;
-    }
-
-    .marquee-star {
-      color: var(--gold) !important;
-      font-size: 15px !important;
-    }
-
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    .marquee:hover .marquee-track {
-      animation-play-state: paused;
-    }
-
     /* Video hover zoom */
     .video-wrapper iframe {
       transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1083,6 +1079,46 @@
 
     .card:hover .video-wrapper iframe {
       transform: scale(1.03);
+    }
+
+    /* Client avatars: grayscale until hover */
+    .client-avatar {
+      filter: grayscale(60%);
+      transition: filter 0.35s ease, transform 0.35s ease;
+    }
+
+    .client-card:hover .client-avatar {
+      filter: none;
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    /* Service number slide on hover */
+    .service-number {
+      transition: transform 0.3s ease;
+    }
+
+    .service-card:hover .service-number {
+      transform: translateX(6px);
+    }
+
+    /* BOOK-CLICK FX styles — remove with the matching JS block to disable */
+    .fx-ring {
+      position: fixed;
+      width: 220px;
+      height: 220px;
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 400;
+      transform: translate(-50%, -50%) scale(0);
+    }
+
+    .fx-particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 400;
+      transform: translate(-50%, -50%);
     }
 
     /* =====================
@@ -1241,34 +1277,9 @@
     </div>
   </div>
 
-  <!-- Marquee strip -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <div class="marquee-group">
-        <span>Long-Form Editing</span><span class="marquee-star">&#10038;</span>
-        <span>VSLs</span><span class="marquee-star">&#10038;</span>
-        <span>Ad Creatives</span><span class="marquee-star">&#10038;</span>
-        <span>Shorts</span><span class="marquee-star">&#10038;</span>
-        <span>Thumbnails</span><span class="marquee-star">&#10038;</span>
-        <span>Color Grading</span><span class="marquee-star">&#10038;</span>
-        <span>Motion Graphics</span><span class="marquee-star">&#10038;</span>
-        <span>Sound Design</span><span class="marquee-star">&#10038;</span>
-      </div>
-      <div class="marquee-group">
-        <span>Long-Form Editing</span><span class="marquee-star">&#10038;</span>
-        <span>VSLs</span><span class="marquee-star">&#10038;</span>
-        <span>Ad Creatives</span><span class="marquee-star">&#10038;</span>
-        <span>Shorts</span><span class="marquee-star">&#10038;</span>
-        <span>Thumbnails</span><span class="marquee-star">&#10038;</span>
-        <span>Color Grading</span><span class="marquee-star">&#10038;</span>
-        <span>Motion Graphics</span><span class="marquee-star">&#10038;</span>
-        <span>Sound Design</span><span class="marquee-star">&#10038;</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Clients -->
   <section id="clients" class="section">
+    <span class="section-ghost" aria-hidden="true">CLIENTS</span>
     <div class="container">
       <div class="clients-header">
         <span class="eyebrow">Clients</span>
@@ -1328,6 +1339,7 @@
 
   <!-- Testimonials -->
   <section id="testimonials" class="section">
+    <span class="section-ghost" aria-hidden="true">RESULTS</span>
     <div class="container">
       <div class="testimonials-header">
         <span class="eyebrow">What Clients Say</span>
@@ -1408,6 +1420,7 @@
 
   <!-- Work -->
   <section id="work" class="section">
+    <span class="section-ghost" aria-hidden="true">WORK</span>
     <div class="container">
       <div class="work-header">
         <span class="eyebrow">The Work</span>
@@ -1450,6 +1463,7 @@
 
   <!-- Shorts: swap SHORT_ID placeholders for real YouTube Shorts IDs, then remove display:none -->
   <section id="shorts" class="section" style="display: none;">
+    <span class="section-ghost" aria-hidden="true">SHORTS</span>
     <div class="container">
       <div class="shorts-header">
         <span class="eyebrow">Short Form</span>
@@ -1471,6 +1485,7 @@
 
   <!-- Services -->
   <section id="services" class="section">
+    <span class="section-ghost" aria-hidden="true">SERVICES</span>
     <div class="container">
       <span class="eyebrow">What I Offer</span>
       <h2 class="services-h2">
@@ -1500,6 +1515,7 @@
 
   <!-- Book a Call -->
   <section id="book" class="section">
+    <span class="section-ghost" aria-hidden="true">LET'S TALK</span>
     <div class="container">
       <span class="eyebrow">Let's Work Together</span>
       <h2>One call. No pitch. Just clarity.</h2>
@@ -1670,6 +1686,90 @@
         }, { threshold: 0.4 });
         statsObserver.observe(statsBar);
       }
+
+      /* 7. SCROLL PROGRESS BAR */
+      var progress = document.createElement('div');
+      progress.className = 'scroll-progress';
+      document.body.appendChild(progress);
+      window.addEventListener('scroll', function () {
+        var h = document.documentElement;
+        var p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        progress.style.transform = 'scaleX(' + p + ')';
+      }, { passive: true });
+
+      var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      /* 8. MAGNETIC BUTTONS */
+      if (canHover) {
+        document.querySelectorAll('.btn-primary').forEach(function (btn) {
+          btn.addEventListener('mousemove', function (e) {
+            var r = btn.getBoundingClientRect();
+            var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+            var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+            btn.style.transform = 'translate(' + (x * 5).toFixed(1) + 'px,' + (y * 4).toFixed(1) + 'px) scale(1.03)';
+          });
+          btn.addEventListener('mouseleave', function () {
+            btn.style.transform = '';
+          });
+        });
+      }
+
+      /* 9. CARD TILT */
+      if (canHover) {
+        document.querySelectorAll('.client-card, .quote-card, .service-card').forEach(function (card) {
+          card.addEventListener('mousemove', function (e) {
+            var r = card.getBoundingClientRect();
+            var x = (e.clientX - r.left) / r.width - 0.5;
+            var y = (e.clientY - r.top) / r.height - 0.5;
+            card.style.transform = 'perspective(700px) rotateY(' + (x * 6).toFixed(2) + 'deg) rotateX(' + (-y * 6).toFixed(2) + 'deg) translateY(-4px)';
+          });
+          card.addEventListener('mouseleave', function () {
+            card.style.transform = '';
+          });
+        });
+      }
+
+      /* 10. BOOK-CLICK FX — remove this whole block (and the .fx-ring/.fx-particle CSS) to disable */
+      document.querySelectorAll('a[href="#book"]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var x = e.clientX, y = e.clientY;
+          if (!x && !y) {
+            var r = link.getBoundingClientRect();
+            x = r.left + r.width / 2;
+            y = r.top + r.height / 2;
+          }
+          var ring = document.createElement('div');
+          ring.className = 'fx-ring';
+          ring.style.left = x + 'px';
+          ring.style.top = y + 'px';
+          document.body.appendChild(ring);
+          ring.animate([
+            { transform: 'translate(-50%,-50%) scale(0)', opacity: 0.9 },
+            { transform: 'translate(-50%,-50%) scale(1)', opacity: 0 }
+          ], { duration: 700, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = function () { ring.remove(); };
+          var colors = ['oklch(60% 0.12 45)', '#1A1814', '#FFFFFF', 'oklch(78% 0.09 50)'];
+          for (var i = 0; i < 26; i++) {
+            var p = document.createElement('div');
+            p.className = 'fx-particle';
+            p.style.left = x + 'px';
+            p.style.top = y + 'px';
+            p.style.background = colors[i % colors.length];
+            var size = 5 + Math.random() * 7;
+            p.style.width = size + 'px';
+            p.style.height = size + 'px';
+            document.body.appendChild(p);
+            var angle = Math.random() * Math.PI * 2;
+            var dist = 70 + Math.random() * 130;
+            var dx = Math.cos(angle) * dist;
+            var dy = Math.sin(angle) * dist - 40;
+            var spin = (Math.random() * 360 - 180).toFixed(0);
+            p.animate([
+              { transform: 'translate(-50%,-50%) scale(1) rotate(0deg)', opacity: 1 },
+              { transform: 'translate(calc(-50% + ' + dx.toFixed(0) + 'px), calc(-50% + ' + dy.toFixed(0) + 'px)) scale(0) rotate(' + spin + 'deg)', opacity: 0.8 }
+            ], { duration: 800 + Math.random() * 500, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = (function (el) { return function () { el.remove(); }; }(p));
+          }
+        });
+      });
 
     }());
   </script>
