@@ -105,28 +105,6 @@
       z-index: 1;
     }
 
-    /* Ghost section titles */
-    .section-ghost {
-      position: absolute;
-      top: clamp(16px, 3.5vw, 40px);
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: clamp(72px, 15vw, 190px);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 1.5px rgba(26, 24, 20, 0.07);
-      pointer-events: none;
-      user-select: none;
-      white-space: nowrap;
-      z-index: 0;
-    }
-
-    #book .section-ghost {
-      -webkit-text-stroke-color: rgba(255, 255, 255, 0.06);
-    }
-
     /* Scroll progress bar */
     .scroll-progress {
       position: fixed;
@@ -1101,26 +1079,6 @@
       transform: translateX(6px);
     }
 
-    /* BOOK-CLICK FX styles — remove with the matching JS block to disable */
-    .fx-ring {
-      position: fixed;
-      width: 220px;
-      height: 220px;
-      border: 3px solid var(--gold);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 400;
-      transform: translate(-50%, -50%) scale(0);
-    }
-
-    .fx-particle {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 400;
-      transform: translate(-50%, -50%);
-    }
-
     /* =====================
        SHORTS
     ===================== */
@@ -1279,7 +1237,6 @@
 
   <!-- Clients -->
   <section id="clients" class="section">
-    <span class="section-ghost" aria-hidden="true">CLIENTS</span>
     <div class="container">
       <div class="clients-header">
         <span class="eyebrow">Clients</span>
@@ -1339,7 +1296,6 @@
 
   <!-- Testimonials -->
   <section id="testimonials" class="section">
-    <span class="section-ghost" aria-hidden="true">RESULTS</span>
     <div class="container">
       <div class="testimonials-header">
         <span class="eyebrow">What Clients Say</span>
@@ -1420,7 +1376,6 @@
 
   <!-- Work -->
   <section id="work" class="section">
-    <span class="section-ghost" aria-hidden="true">WORK</span>
     <div class="container">
       <div class="work-header">
         <span class="eyebrow">The Work</span>
@@ -1463,7 +1418,6 @@
 
   <!-- Shorts: swap SHORT_ID placeholders for real YouTube Shorts IDs, then remove display:none -->
   <section id="shorts" class="section" style="display: none;">
-    <span class="section-ghost" aria-hidden="true">SHORTS</span>
     <div class="container">
       <div class="shorts-header">
         <span class="eyebrow">Short Form</span>
@@ -1485,7 +1439,6 @@
 
   <!-- Services -->
   <section id="services" class="section">
-    <span class="section-ghost" aria-hidden="true">SERVICES</span>
     <div class="container">
       <span class="eyebrow">What I Offer</span>
       <h2 class="services-h2">
@@ -1515,7 +1468,6 @@
 
   <!-- Book a Call -->
   <section id="book" class="section">
-    <span class="section-ghost" aria-hidden="true">LET'S TALK</span>
     <div class="container">
       <span class="eyebrow">Let's Work Together</span>
       <h2>One call. No pitch. Just clarity.</h2>
@@ -1728,48 +1680,6 @@
           });
         });
       }
-
-      /* 10. BOOK-CLICK FX — remove this whole block (and the .fx-ring/.fx-particle CSS) to disable */
-      document.querySelectorAll('a[href="#book"]').forEach(function (link) {
-        link.addEventListener('click', function (e) {
-          var x = e.clientX, y = e.clientY;
-          if (!x && !y) {
-            var r = link.getBoundingClientRect();
-            x = r.left + r.width / 2;
-            y = r.top + r.height / 2;
-          }
-          var ring = document.createElement('div');
-          ring.className = 'fx-ring';
-          ring.style.left = x + 'px';
-          ring.style.top = y + 'px';
-          document.body.appendChild(ring);
-          ring.animate([
-            { transform: 'translate(-50%,-50%) scale(0)', opacity: 0.9 },
-            { transform: 'translate(-50%,-50%) scale(1)', opacity: 0 }
-          ], { duration: 700, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = function () { ring.remove(); };
-          var colors = ['oklch(60% 0.12 45)', '#1A1814', '#FFFFFF', 'oklch(78% 0.09 50)'];
-          for (var i = 0; i < 26; i++) {
-            var p = document.createElement('div');
-            p.className = 'fx-particle';
-            p.style.left = x + 'px';
-            p.style.top = y + 'px';
-            p.style.background = colors[i % colors.length];
-            var size = 5 + Math.random() * 7;
-            p.style.width = size + 'px';
-            p.style.height = size + 'px';
-            document.body.appendChild(p);
-            var angle = Math.random() * Math.PI * 2;
-            var dist = 70 + Math.random() * 130;
-            var dx = Math.cos(angle) * dist;
-            var dy = Math.sin(angle) * dist - 40;
-            var spin = (Math.random() * 360 - 180).toFixed(0);
-            p.animate([
-              { transform: 'translate(-50%,-50%) scale(1) rotate(0deg)', opacity: 1 },
-              { transform: 'translate(calc(-50% + ' + dx.toFixed(0) + 'px), calc(-50% + ' + dy.toFixed(0) + 'px)) scale(0) rotate(' + spin + 'deg)', opacity: 0.8 }
-            ], { duration: 800 + Math.random() * 500, easing: 'cubic-bezier(0.22,1,0.36,1)' }).onfinish = (function (el) { return function () { el.remove(); }; }(p));
-          }
-        });
-      });
 
     }());
   </script>
