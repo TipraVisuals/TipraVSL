@@ -395,15 +395,15 @@
       position: absolute;
       background: var(--white);
       border: 1px solid var(--surface-2);
-      border-radius: 16px;
-      padding: 16px 20px;
-      box-shadow: 0 18px 40px rgba(26, 24, 20, 0.12);
+      border-radius: 14px;
+      padding: 12px 16px;
+      box-shadow: 0 12px 28px rgba(26, 24, 20, 0.09);
       z-index: 1;
-      animation: floatY 6s ease-in-out infinite;
+      animation: floatY 7s ease-in-out infinite;
     }
 
     .float-num {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: var(--text-1);
@@ -417,18 +417,16 @@
       margin-top: 2px;
     }
 
-    .float-1 { left: 4%; top: 22%; }
-    .float-2 { right: 4%; top: 28%; animation-delay: 1.5s; }
-    .float-3 { left: 7%; bottom: 20%; animation-delay: 3s; }
-    .float-4 { right: 8%; bottom: 16%; animation-delay: 2.2s; }
+    .float-1 { --rot: -5deg; left: 7%; top: 30%; }
+    .float-2 { --rot: 4deg; right: 6%; top: 34%; animation-delay: 1.5s; }
 
     .float-2 .avatar-stack {
       margin-bottom: 8px;
     }
 
     @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-14px); }
+      0%, 100% { transform: rotate(var(--rot, 0deg)) translateY(0); }
+      50% { transform: rotate(var(--rot, 0deg)) translateY(-10px); }
     }
 
     @media (max-width: 1099px) {
@@ -925,7 +923,9 @@
     ===================== */
     #book {
       text-align: center;
-      background: var(--text-1);
+      background:
+        radial-gradient(700px 340px at 50% 0%, oklch(60% 0.12 45 / 0.16), transparent 70%),
+        var(--text-1);
     }
 
     #book h2 {
@@ -1024,6 +1024,67 @@
         text-align: center;
       }
     }
+    /* Gold text selection */
+    ::selection {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* =====================
+       MARQUEE
+    ===================== */
+    .marquee {
+      overflow: hidden;
+      border-block: 1px solid var(--surface-2);
+      background: var(--white);
+      padding: 20px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding-right: 40px;
+    }
+
+    .marquee-group span {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      white-space: nowrap;
+    }
+
+    .marquee-star {
+      color: var(--gold) !important;
+      font-size: 15px !important;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* Video hover zoom */
+    .video-wrapper iframe {
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .card:hover .video-wrapper iframe {
+      transform: scale(1.03);
+    }
+
     /* =====================
        SHORTS
     ===================== */
@@ -1127,15 +1188,6 @@
       </div>
       <span class="float-label">Trusted by top creators</span>
     </div>
-    <div class="float-card float-3">
-      <span class="float-num">50+</span>
-      <span class="float-label">VSLs edited</span>
-    </div>
-    <div class="float-card float-4">
-      <span class="float-num">400+</span>
-      <span class="float-label">Ads produced</span>
-    </div>
-
     <div class="container">
       <div class="hero-content">
         <span class="eyebrow">Premium YouTube Editing</span>
@@ -1185,6 +1237,32 @@
           <span class="stats-number">100+</span>
           <span class="stats-label">Long Forms Edited</span>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee strip -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Long-Form Editing</span><span class="marquee-star">&#10038;</span>
+        <span>VSLs</span><span class="marquee-star">&#10038;</span>
+        <span>Ad Creatives</span><span class="marquee-star">&#10038;</span>
+        <span>Shorts</span><span class="marquee-star">&#10038;</span>
+        <span>Thumbnails</span><span class="marquee-star">&#10038;</span>
+        <span>Color Grading</span><span class="marquee-star">&#10038;</span>
+        <span>Motion Graphics</span><span class="marquee-star">&#10038;</span>
+        <span>Sound Design</span><span class="marquee-star">&#10038;</span>
+      </div>
+      <div class="marquee-group">
+        <span>Long-Form Editing</span><span class="marquee-star">&#10038;</span>
+        <span>VSLs</span><span class="marquee-star">&#10038;</span>
+        <span>Ad Creatives</span><span class="marquee-star">&#10038;</span>
+        <span>Shorts</span><span class="marquee-star">&#10038;</span>
+        <span>Thumbnails</span><span class="marquee-star">&#10038;</span>
+        <span>Color Grading</span><span class="marquee-star">&#10038;</span>
+        <span>Motion Graphics</span><span class="marquee-star">&#10038;</span>
+        <span>Sound Design</span><span class="marquee-star">&#10038;</span>
       </div>
     </div>
   </div>
