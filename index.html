@@ -659,53 +659,66 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 0;
+      gap: 20px;
     }
 
     .service-card {
-      padding: 40px 36px;
-      border-top: 1px solid var(--surface-2);
-      border-bottom: 1px solid var(--surface-2);
-      border-left: 3px solid transparent;
-      border-right: none;
+      position: relative;
+      padding: 40px 32px 36px;
       background: var(--white);
+      border: 1px solid var(--surface-2);
+      border-radius: 20px;
       cursor: default;
-      transition: background 0.3s ease, border-left-color 0.3s ease;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(26, 24, 20, 0.05);
+      transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  box-shadow 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Gold accent line grows across the top on hover */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
     }
 
     .service-card:hover {
-      background: rgba(200, 169, 126, 0.08);
-      border-left-color: var(--gold);
-    }
-
-    .service-card:first-child {
-      border-radius: 12px 0 0 12px;
-    }
-
-    .service-card:nth-child(2) {
-      border-radius: 0;
-    }
-
-    .service-card:last-child {
-      border-radius: 0 12px 12px 0;
+      box-shadow:
+        0 0 0 5px oklch(60% 0.12 45 / 0.1),
+        0 20px 46px -14px rgba(26, 24, 20, 0.16);
     }
 
     .service-number {
-      font-size: 13px;
-      font-weight: 600;
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 42px;
+      line-height: 1;
       color: var(--gold);
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .service-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
+      letter-spacing: -0.01em;
       color: var(--text-1);
       margin-bottom: 12px;
     }
 
     .service-desc {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--text-2);
       line-height: 1.7;
     }
@@ -713,25 +726,7 @@
     @media (max-width: 767px) {
       .services-grid {
         grid-template-columns: 1fr;
-      }
-
-      .service-card {
-        border-radius: 0;
-        border-bottom: none;
-        border-right: 1px solid var(--surface-2);
-      }
-
-      .service-card:first-child {
-        border-radius: 12px 12px 0 0;
-      }
-
-      .service-card:nth-child(2) {
-        border-left: 3px solid transparent;
-      }
-
-      .service-card:last-child {
-        border-radius: 0 0 12px 12px;
-        border-bottom: 1px solid var(--surface-2);
+        gap: 16px;
       }
     }
 
