@@ -1073,87 +1073,33 @@
       color: var(--white);
     }
 
-    /* ===== CTA CLICK FLARE (cinematic lens flare) — remove this block + the matching JS block to disable ===== */
-    @keyframes cta-core {
-      0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.1); }
-      25%  { opacity: 1; }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.15); }
-    }
-
-    @keyframes cta-streak-h {
-      0%   { opacity: 0; transform: translate(-50%, -50%) scaleX(0); }
-      25%  { opacity: 1; }
-      100% { opacity: 0; transform: translate(-50%, -50%) scaleX(1); }
-    }
-
-    @keyframes cta-streak-v {
-      0%   { opacity: 0; transform: translate(-50%, -50%) scaleY(0); }
-      30%  { opacity: 0.85; }
-      100% { opacity: 0; transform: translate(-50%, -50%) scaleY(1); }
-    }
-
-    @keyframes cta-spark {
-      0%   { opacity: 1; transform: translate(-50%, -50%) translate(0, 0) scale(1); }
-      100% { opacity: 0; transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.2); }
+    /* ===== CTA CLICK RIPPLE (elegant gold ring) — remove this block + the matching JS block to disable ===== */
+    @keyframes cta-ripple {
+      0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(0.28); }
+      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
     }
 
     @keyframes cta-lit {
       0%, 100% { box-shadow: none; }
-      22%      { box-shadow: 0 0 0 3px oklch(78% 0.13 60 / 0.4), 0 6px 26px oklch(70% 0.14 55 / 0.5); }
+      35%      { box-shadow: 0 0 0 3px oklch(60% 0.12 45 / 0.28), 0 6px 24px oklch(60% 0.12 45 / 0.4); }
     }
 
-    .cta-core {
+    .cta-ripple {
       position: fixed;
-      width: 84px;
-      height: 84px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
       pointer-events: none;
-      z-index: 402;
-      background: radial-gradient(circle, #fff, oklch(85% 0.1 70 / 0.85) 32%, transparent 70%);
-      filter: blur(1.5px);
-      animation: cta-core 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .cta-streak-h {
-      position: fixed;
-      width: 360px;
-      height: 3px;
-      border-radius: 3px;
-      pointer-events: none;
-      z-index: 401;
-      background: linear-gradient(90deg, transparent, oklch(80% 0.12 65 / 0.9) 18%, #fff 50%, oklch(80% 0.12 65 / 0.9) 82%, transparent);
-      box-shadow: 0 0 14px oklch(75% 0.13 60 / 0.85);
-      animation: cta-streak-h 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .cta-streak-v {
-      position: fixed;
-      width: 2px;
-      height: 130px;
-      border-radius: 2px;
-      pointer-events: none;
-      z-index: 401;
-      background: linear-gradient(180deg, transparent, #fff 50%, transparent);
-      box-shadow: 0 0 10px oklch(78% 0.12 62 / 0.7);
-      animation: cta-streak-v 0.62s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-
-    .cta-spark {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 402;
-      background: radial-gradient(circle, #fff, oklch(75% 0.13 60));
-      box-shadow: 0 0 8px oklch(75% 0.13 60 / 0.9);
-      animation: cta-spark 0.72s ease-out forwards;
+      z-index: 400;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 14px oklch(60% 0.12 45 / 0.35), inset 0 0 10px oklch(60% 0.12 45 / 0.15);
+      animation: cta-ripple 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
     .cta-lit {
-      animation: cta-lit 0.6s ease;
+      animation: cta-lit 0.55s ease;
     }
-    /* ===== END CTA CLICK FLARE ===== */
+    /* ===== END CTA CLICK RIPPLE ===== */
 
     /* Video hover zoom */
     .video-wrapper iframe {
@@ -1769,7 +1715,7 @@
         });
       }
 
-      /* ===== CTA CLICK FLARE (cinematic lens flare) — remove this block + the matching CSS block to disable ===== */
+      /* ===== CTA CLICK RIPPLE (elegant gold ring) — remove this block + the matching CSS block to disable ===== */
       document.querySelectorAll('.btn-primary').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           var r = btn.getBoundingClientRect();
@@ -1777,35 +1723,24 @@
           var y = (e.clientX && e.clientY) ? e.clientY : r.top + r.height / 2;
           var made = [];
 
-          function spawn(cls) {
-            var el = document.createElement('div');
-            el.className = cls;
-            el.style.left = x + 'px';
-            el.style.top = y + 'px';
-            document.body.appendChild(el);
-            made.push(el);
-            return el;
-          }
-
-          spawn('cta-streak-h');
-          spawn('cta-streak-v');
-          spawn('cta-core');
-
-          /* sparks fly outward, biased along the horizontal streak */
-          var dirs = [[70, -12], [-70, 12], [104, 6], [-104, -6], [40, -46], [-40, 46]];
-          dirs.forEach(function (d) {
-            var s = spawn('cta-spark');
-            s.style.setProperty('--dx', d[0] + 'px');
-            s.style.setProperty('--dy', d[1] + 'px');
+          /* two staggered gold rings ripple outward, echoing the site's glow rings */
+          [0, 130].forEach(function (delay) {
+            var ring = document.createElement('div');
+            ring.className = 'cta-ripple';
+            ring.style.left = x + 'px';
+            ring.style.top = y + 'px';
+            ring.style.animationDelay = delay + 'ms';
+            document.body.appendChild(ring);
+            made.push(ring);
           });
 
           btn.classList.add('cta-lit');
 
-          setTimeout(function () { made.forEach(function (el) { el.remove(); }); }, 780);
-          setTimeout(function () { btn.classList.remove('cta-lit'); }, 620);
+          setTimeout(function () { made.forEach(function (el) { el.remove(); }); }, 1100);
+          setTimeout(function () { btn.classList.remove('cta-lit'); }, 560);
         });
       });
-      /* ===== END CTA CLICK FLARE ===== */
+      /* ===== END CTA CLICK RIPPLE ===== */
 
       /* 9. CARD TILT */
       if (canHover) {
