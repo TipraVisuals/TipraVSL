@@ -757,13 +757,16 @@
       border-radius: 12px;
     }
 
-    .video-wrapper iframe {
+    .video-wrapper iframe,
+    .video-wrapper video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       border: none;
+      object-fit: cover;
+      background: var(--text-1);
     }
 
     @media (max-width: 767px) {
@@ -1457,7 +1460,7 @@
 
       <div class="card testimonials-featured reveal" style="--i:0">
         <div class="video-wrapper">
-          <iframe src="https://www.youtube.com/embed/Umh8w7480vI?rel=0&modestbranding=1" loading="lazy" allowfullscreen title="Testimonial from Camilo Castaneda"></iframe>
+          <video src="camilo-testimonial.mp4" controls playsinline preload="metadata" title="Testimonial from Camilo Castaneda"></video>
         </div>
         <p class="video-caption">Camilo Castaneda, YouTube Creator</p>
       </div>
