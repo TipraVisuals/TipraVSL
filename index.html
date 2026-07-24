@@ -1027,14 +1027,15 @@
       flex: 1;
       display: flex;
       align-items: center;
-      gap: 2px;
+      justify-content: space-between;
       height: 34px;
       cursor: pointer;
     }
 
     .audio-wave span {
-      flex: 1;
-      min-height: 3px;
+      width: 2px;
+      flex: none;
+      min-height: 2px;
       border-radius: 2px;
       background: var(--surface-2);
       transition: background 0.12s linear;
@@ -1462,8 +1463,16 @@
       </div>
 
       <div class="testimonials-grid">
-        <div class="card quote-card reveal" style="--i:1">
-          <p class="quote-text">Love what you did with the edit. The visuals, animations, sfx, etc.</p>
+        <div class="card quote-card audio-card reveal" style="--i:1">
+          <span class="audio-tag">Voice note</span>
+          <div class="audio-player" data-src="josh-testimonial.mp3">
+            <button class="audio-btn" type="button" aria-label="Play Josh Lyons's voice testimonial">
+              <span class="ic-play"></span>
+              <span class="ic-pause"></span>
+            </button>
+            <div class="audio-wave" aria-label="Seek"></div>
+            <span class="audio-time"><span class="audio-cur">0:00</span></span>
+          </div>
           <div class="quote-attribution">
             <img class="quote-avatar" src="joshlyons.jpg" alt="Josh Lyons">
             <div>
@@ -1514,7 +1523,7 @@
         </div>
         <div class="card quote-card audio-card reveal" style="--i:6">
           <span class="audio-tag">Voice note</span>
-          <div class="audio-player" data-src="jackcole-testimonial.ogg">
+          <div class="audio-player" data-src="jackcole-testimonial.mp3">
             <button class="audio-btn" type="button" aria-label="Play Jack Cole's voice testimonial">
               <span class="ic-play"></span>
               <span class="ic-pause"></span>
@@ -1848,7 +1857,7 @@
       /* ===== END CTA CLICK SHEEN ===== */
 
       /* ===== AUDIO TESTIMONIAL PLAYER ===== */
-      document.querySelectorAll('.audio-player').forEach(function (player) {
+      document.querySelectorAll('.audio-player').forEach(function (player, pIndex) {
         var audio = new Audio(player.getAttribute('data-src'));
         audio.preload = 'metadata';
         player._audio = audio;
@@ -1857,11 +1866,12 @@
         var wave = player.querySelector('.audio-wave');
         var curEl = player.querySelector('.audio-cur');
 
-        /* build a natural-looking waveform */
-        var heights = [30, 58, 42, 78, 50, 66, 90, 38, 70, 54, 84, 60, 34, 74, 48, 94, 44, 68, 60, 40, 80, 56, 64, 50, 88, 60, 40, 76, 50, 70, 46, 62, 84, 52, 66, 42];
-        var bars = heights.map(function (h) {
+        /* build a fine, natural-looking waveform (rotated per player for variety) */
+        var base = [26, 44, 34, 58, 40, 70, 48, 32, 62, 42, 78, 52, 30, 66, 46, 88, 38, 60, 50, 34, 72, 44, 56, 40, 82, 48, 30, 64, 42, 74, 36, 54, 68, 44, 58, 32, 76, 46, 62, 38, 70, 50, 34, 60, 84, 42, 52, 30, 66, 46, 56, 40];
+        var offset = (pIndex * 11) % base.length;
+        var bars = base.map(function (_, i) {
           var s = document.createElement('span');
-          s.style.height = h + '%';
+          s.style.height = base[(i + offset) % base.length] + '%';
           wave.appendChild(s);
           return s;
         });
