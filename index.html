@@ -868,6 +868,14 @@
       margin-bottom: 32px;
     }
 
+    /* Player card: no hover lift/transform so native video controls don't flicker */
+    .testimonials-featured:hover {
+      transform: none;
+      box-shadow:
+        0 0 0 5px oklch(60% 0.12 45 / 0.16),
+        0 10px 30px oklch(60% 0.12 45 / 0.3);
+    }
+
     .video-caption {
       font-size: 14px;
       color: var(--text-2);
