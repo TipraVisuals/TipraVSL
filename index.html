@@ -1073,26 +1073,28 @@
       color: var(--white);
     }
 
-    /* ===== CTA CLICK RIPPLE (contained to the button) — remove this block + the matching JS block to disable ===== */
+    /* ===== CTA CLICK SHEEN (light sweep across the button) — remove this block + the matching JS block to disable ===== */
     .btn-primary {
       position: relative;
       overflow: hidden;
     }
 
-    .cta-ripple {
+    .cta-sheen {
       position: absolute;
-      border-radius: 50%;
+      top: 0;
+      left: 0;
+      width: 55%;
+      height: 100%;
       pointer-events: none;
-      background: radial-gradient(circle, oklch(72% 0.13 58 / 0.6), oklch(66% 0.12 52 / 0.2) 55%, transparent 72%);
-      transform: translate(-50%, -50%) scale(0);
-      animation: cta-ripple 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: translateX(-200%) skewX(-18deg);
+      animation: cta-sheen 0.6s ease forwards;
     }
 
-    @keyframes cta-ripple {
-      0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.95; }
-      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    @keyframes cta-sheen {
+      to { transform: translateX(360%) skewX(-18deg); }
     }
-    /* ===== END CTA CLICK RIPPLE ===== */
+    /* ===== END CTA CLICK SHEEN ===== */
 
     /* Video hover zoom */
     .video-wrapper iframe {
@@ -1708,25 +1710,16 @@
         });
       }
 
-      /* ===== CTA CLICK RIPPLE (contained to the button) — remove this block + the matching CSS block to disable ===== */
+      /* ===== CTA CLICK SHEEN (light sweep across the button) — remove this block + the matching CSS block to disable ===== */
       document.querySelectorAll('.btn-primary').forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-          var r = btn.getBoundingClientRect();
-          var size = Math.max(r.width, r.height) * 2.5;
-          var x = (e.clientX ? e.clientX : r.left + r.width / 2) - r.left;
-          var y = (e.clientY ? e.clientY : r.top + r.height / 2) - r.top;
-
-          var rip = document.createElement('span');
-          rip.className = 'cta-ripple';
-          rip.style.width = rip.style.height = size + 'px';
-          rip.style.left = x + 'px';
-          rip.style.top = y + 'px';
-          btn.appendChild(rip);
-
-          setTimeout(function () { rip.remove(); }, 650);
+        btn.addEventListener('click', function () {
+          var s = document.createElement('span');
+          s.className = 'cta-sheen';
+          btn.appendChild(s);
+          setTimeout(function () { s.remove(); }, 650);
         });
       });
-      /* ===== END CTA CLICK RIPPLE ===== */
+      /* ===== END CTA CLICK SHEEN ===== */
 
       /* 9. CARD TILT */
       if (canHover) {
