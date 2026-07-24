@@ -1073,31 +1073,24 @@
       color: var(--white);
     }
 
-    /* ===== CTA CLICK RIPPLE (elegant gold ring) — remove this block + the matching JS block to disable ===== */
-    @keyframes cta-ripple {
-      0%   { opacity: 0.85; transform: translate(-50%, -50%) scale(0.28); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
-    }
-
-    @keyframes cta-lit {
-      0%, 100% { box-shadow: none; }
-      35%      { box-shadow: 0 0 0 3px oklch(60% 0.12 45 / 0.28), 0 6px 24px oklch(60% 0.12 45 / 0.4); }
+    /* ===== CTA CLICK RIPPLE (contained to the button) — remove this block + the matching JS block to disable ===== */
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
     }
 
     .cta-ripple {
-      position: fixed;
-      width: 240px;
-      height: 240px;
+      position: absolute;
       border-radius: 50%;
       pointer-events: none;
-      z-index: 400;
-      border: 1.5px solid var(--gold);
-      box-shadow: 0 0 14px oklch(60% 0.12 45 / 0.35), inset 0 0 10px oklch(60% 0.12 45 / 0.15);
-      animation: cta-ripple 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+      background: radial-gradient(circle, oklch(72% 0.13 58 / 0.6), oklch(66% 0.12 52 / 0.2) 55%, transparent 72%);
+      transform: translate(-50%, -50%) scale(0);
+      animation: cta-ripple 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
 
-    .cta-lit {
-      animation: cta-lit 0.55s ease;
+    @keyframes cta-ripple {
+      0%   { transform: translate(-50%, -50%) scale(0); opacity: 0.95; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
     }
     /* ===== END CTA CLICK RIPPLE ===== */
 
@@ -1715,29 +1708,22 @@
         });
       }
 
-      /* ===== CTA CLICK RIPPLE (elegant gold ring) — remove this block + the matching CSS block to disable ===== */
+      /* ===== CTA CLICK RIPPLE (contained to the button) — remove this block + the matching CSS block to disable ===== */
       document.querySelectorAll('.btn-primary').forEach(function (btn) {
         btn.addEventListener('click', function (e) {
           var r = btn.getBoundingClientRect();
-          var x = (e.clientX && e.clientY) ? e.clientX : r.left + r.width / 2;
-          var y = (e.clientX && e.clientY) ? e.clientY : r.top + r.height / 2;
-          var made = [];
+          var size = Math.max(r.width, r.height) * 2.5;
+          var x = (e.clientX ? e.clientX : r.left + r.width / 2) - r.left;
+          var y = (e.clientY ? e.clientY : r.top + r.height / 2) - r.top;
 
-          /* two staggered gold rings ripple outward, echoing the site's glow rings */
-          [0, 130].forEach(function (delay) {
-            var ring = document.createElement('div');
-            ring.className = 'cta-ripple';
-            ring.style.left = x + 'px';
-            ring.style.top = y + 'px';
-            ring.style.animationDelay = delay + 'ms';
-            document.body.appendChild(ring);
-            made.push(ring);
-          });
+          var rip = document.createElement('span');
+          rip.className = 'cta-ripple';
+          rip.style.width = rip.style.height = size + 'px';
+          rip.style.left = x + 'px';
+          rip.style.top = y + 'px';
+          btn.appendChild(rip);
 
-          btn.classList.add('cta-lit');
-
-          setTimeout(function () { made.forEach(function (el) { el.remove(); }); }, 1100);
-          setTimeout(function () { btn.classList.remove('cta-lit'); }, 560);
+          setTimeout(function () { rip.remove(); }, 650);
         });
       });
       /* ===== END CTA CLICK RIPPLE ===== */
