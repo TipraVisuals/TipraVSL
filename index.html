@@ -1211,20 +1211,10 @@
     }
     /* ===== END CTA CLICK SHEEN ===== */
 
-    /* Video cards: zoom the embed inside its fixed frame, GPU-composited so it stays smooth */
-    .work-grid .video-wrapper iframe {
-      will-change: transform;
-      backface-visibility: hidden;
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
+    /* Video cards: lift on the Y axis on hover (no zoom) */
     .video-card:hover {
-      transform: none;
+      transform: translateY(-6px);
       box-shadow: 0 16px 44px rgba(0, 0, 0, 0.12);
-    }
-
-    .video-card:hover .video-wrapper iframe {
-      transform: scale(1.05);
     }
 
     /* Client avatar pop on hover */
