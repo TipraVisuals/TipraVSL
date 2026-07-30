@@ -1327,7 +1327,7 @@
       .client-card {
         min-width: 172px;
         width: 172px;
-        padding: 26px 18px 22px;
+        padding: 22px 18px 20px;
         scroll-snap-align: none;
         min-height: 0;
         display: flex;
@@ -1344,9 +1344,9 @@
         margin-bottom: 14px;
       }
       .client-card .client-name { font-size: 15px; }
-      .client-card .client-role { font-size: 12px; margin-top: 5px; line-height: 1.4; min-height: 2.8em; }
+      .client-card .client-role { font-size: 12px; margin-top: 5px; margin-bottom: 14px; line-height: 1.4; }
       .client-card .client-stat {
-        margin-top: 16px;
+        margin-top: auto; /* anchor the pill to the bottom so cards stay balanced */
         font-size: 11.5px;
         font-weight: 700;
         color: var(--gold);
