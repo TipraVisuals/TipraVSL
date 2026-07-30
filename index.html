@@ -1310,9 +1310,27 @@
       .stats-number { font-size: clamp(28px, 9vw, 38px); }
       .stats-label { font-size: 11px; }
 
-      /* CLIENTS — full-bleed snap carousel with a peek of the next card */
-      .clients-grid { margin-inline: -20px; padding-inline: 20px; scroll-padding-left: 20px; gap: 14px; }
-      .client-card { min-width: 76%; scroll-snap-align: center; }
+      /* CLIENTS — auto-scrolling marquee, locked to horizontal, smaller cards */
+      .clients-grid {
+        margin-inline: -20px;
+        padding-inline: 20px;
+        gap: 14px;
+        scroll-snap-type: none;
+        scroll-behavior: auto;
+        touch-action: pan-x;
+        overflow-y: hidden;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .clients-grid::-webkit-scrollbar { display: none; }
+      .client-card {
+        min-width: 160px;
+        width: 160px;
+        padding: 20px;
+        scroll-snap-align: none;
+        min-height: 0;
+      }
 
       /* SERVICES + TESTIMONIALS — tighter card padding */
       .service-card { padding: 32px 26px; }
@@ -1992,6 +2010,47 @@
             card.style.transform = '';
           });
         });
+      }
+
+      /* 10. CLIENTS AUTO-SCROLL MARQUEE (mobile only) */
+      var clientsGrid = document.querySelector('.clients-grid');
+      if (clientsGrid && window.matchMedia('(max-width: 767px)').matches) {
+        /* duplicate the cards once so the loop is seamless */
+        Array.prototype.slice.call(clientsGrid.children).forEach(function (card) {
+          var clone = card.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          clientsGrid.appendChild(clone);
+        });
+        /* every card visible (clones are never seen by the reveal observer) */
+        clientsGrid.querySelectorAll('.client-card').forEach(function (c) {
+          c.classList.remove('reveal');
+          c.classList.add('visible');
+          c.style.transitionDelay = '0ms';
+        });
+
+        var paused = false, resumeTimer = null;
+        var SPEED = 0.55; /* px per frame */
+
+        function half() { return clientsGrid.scrollWidth / 2; }
+        function pause() {
+          paused = true;
+          clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(function () { paused = false; }, 2200);
+        }
+
+        /* user interaction pauses the auto-scroll, then it resumes */
+        ['touchstart', 'pointerdown', 'wheel'].forEach(function (ev) {
+          clientsGrid.addEventListener(ev, pause, { passive: true });
+        });
+
+        function tick() {
+          if (!paused) {
+            clientsGrid.scrollLeft += SPEED;
+            if (clientsGrid.scrollLeft >= half()) clientsGrid.scrollLeft -= half();
+          }
+          requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
       }
 
     }());
