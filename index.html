@@ -1276,6 +1276,63 @@
         max-width: 300px;
       }
     }
+    /* =====================================================
+       MOBILE POLISH — built for phones (desktop untouched)
+    ===================================================== */
+    @media (max-width: 767px) {
+      /* Vertical rhythm + anchor offset so headings clear the floating nav */
+      .section { padding-block: 60px; scroll-margin-top: 84px; }
+      #hero, .stats-bar, #clients, #testimonials, #work, #services, #book { scroll-margin-top: 84px; }
+      .container { padding: 0 20px; }
+
+      /* Heading scale tuned for narrow screens */
+      h2 { font-size: clamp(26px, 8vw, 33px); letter-spacing: -0.03em; line-height: 1.1; }
+      .services-h2 { font-size: clamp(30px, 8.5vw, 38px); }
+      .eyebrow { font-size: 10.5px; padding: 7px 15px; margin-bottom: 16px; }
+
+      /* Nav pill: slightly tighter */
+      .nav { top: 10px; }
+      .nav-inner { padding: 9px 9px 9px 18px; }
+      .nav-logo { font-size: 16px; }
+
+      /* HERO — shorter headline, breathable spacing, thumb-friendly CTA */
+      #hero { min-height: auto; padding-top: 28px; padding-bottom: 56px; }
+      .hero-h1 { font-size: clamp(36px, 11.5vw, 48px); line-height: 1.08; }
+      .hero-sub { font-size: 16px; margin-top: 18px; line-height: 1.6; }
+      .hero-cta { display: block; width: 100%; text-align: center; margin-top: 30px; padding: 16px 32px; font-size: 16px; }
+      .hero-avatars { flex-direction: column; gap: 12px; margin-top: 28px; }
+      .hero-avatars .hero-proof { text-align: center; font-size: 13px; max-width: 260px; margin: 0 auto; }
+
+      /* STATS — comfortable 2x2 */
+      .stats-bar { padding-block: 52px; }
+      .stats-grid { gap: 12px; }
+      .stats-item { padding: 24px 14px; }
+      .stats-number { font-size: clamp(28px, 9vw, 38px); }
+      .stats-label { font-size: 11px; }
+
+      /* CLIENTS — full-bleed snap carousel with a peek of the next card */
+      .clients-grid { margin-inline: -20px; padding-inline: 20px; scroll-padding-left: 20px; gap: 14px; }
+      .client-card { min-width: 76%; scroll-snap-align: center; }
+
+      /* SERVICES + TESTIMONIALS — tighter card padding */
+      .service-card { padding: 32px 26px; }
+      .service-number { font-size: 36px; margin-bottom: 16px; }
+      .quote-card { padding: 26px 24px; }
+      .audio-tag { padding-top: 34px; }
+
+      /* WORK — a bit more breathing room between clips */
+      .work-grid { gap: 18px; }
+
+      /* BOOK */
+      #book .book-sub { font-size: 15.5px; margin-bottom: 36px; }
+      .calendly-wrapper { padding: 10px; border-radius: 20px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero-h1 { font-size: 33px; }
+      h2 { font-size: 24px; }
+      .services-h2 { font-size: 28px; }
+    }
   </style>
 </head>
 <body>
