@@ -1325,11 +1325,34 @@
       }
       .clients-grid::-webkit-scrollbar { display: none; }
       .client-card {
-        min-width: 160px;
-        width: 160px;
-        padding: 20px;
+        min-width: 172px;
+        width: 172px;
+        padding: 26px 18px 22px;
         scroll-snap-align: none;
         min-height: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 1px solid var(--surface-2);
+        border-radius: 18px;
+        box-shadow: 0 8px 24px rgba(26, 24, 20, 0.06);
+      }
+      .client-card .client-avatar {
+        width: 56px;
+        height: 56px;
+        margin-bottom: 14px;
+      }
+      .client-card .client-name { font-size: 15px; }
+      .client-card .client-role { font-size: 12px; margin-top: 5px; line-height: 1.4; min-height: 2.8em; }
+      .client-card .client-stat {
+        margin-top: 16px;
+        font-size: 11.5px;
+        font-weight: 700;
+        color: var(--gold);
+        background: color-mix(in srgb, var(--gold) 12%, transparent);
+        padding: 5px 13px;
+        border-radius: 100px;
       }
 
       /* SERVICES + TESTIMONIALS — tighter card padding */
@@ -2029,11 +2052,13 @@
         });
 
         var paused = false, resumeTimer = null;
-        var SPEED = 0.55; /* px per frame */
+        var SPEED = 0.7;          /* px per frame */
+        var pos = 0;              /* float accumulator (mobile rounds scrollLeft to int) */
 
         function half() { return clientsGrid.scrollWidth / 2; }
         function pause() {
           paused = true;
+          pos = clientsGrid.scrollLeft; /* continue from where the user left it */
           clearTimeout(resumeTimer);
           resumeTimer = setTimeout(function () { paused = false; }, 2200);
         }
@@ -2045,8 +2070,9 @@
 
         function tick() {
           if (!paused) {
-            clientsGrid.scrollLeft += SPEED;
-            if (clientsGrid.scrollLeft >= half()) clientsGrid.scrollLeft -= half();
+            pos += SPEED;
+            if (pos >= half()) pos -= half();
+            clientsGrid.scrollLeft = pos;
           }
           requestAnimationFrame(tick);
         }
