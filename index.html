@@ -2038,12 +2038,15 @@
       /* 10. CLIENTS AUTO-SCROLL MARQUEE (mobile only) */
       var clientsGrid = document.querySelector('.clients-grid');
       if (clientsGrid && window.matchMedia('(max-width: 767px)').matches) {
-        /* duplicate the cards once so the loop is seamless */
-        Array.prototype.slice.call(clientsGrid.children).forEach(function (card) {
+        var originalCards = Array.prototype.slice.call(clientsGrid.children);
+        var firstOriginal = originalCards[0];
+        /* duplicate the set once so the loop is seamless */
+        originalCards.forEach(function (card) {
           var clone = card.cloneNode(true);
           clone.setAttribute('aria-hidden', 'true');
           clientsGrid.appendChild(clone);
         });
+        var firstClone = clientsGrid.children[originalCards.length];
         /* every card visible (clones are never seen by the reveal observer) */
         clientsGrid.querySelectorAll('.client-card').forEach(function (c) {
           c.classList.remove('reveal');
@@ -2051,27 +2054,36 @@
           c.style.transitionDelay = '0ms';
         });
 
-        var paused = false, resumeTimer = null;
-        var SPEED = 0.7;          /* px per frame */
+        var SPEED = 0.6;          /* px per frame */
         var pos = 0;              /* float accumulator (mobile rounds scrollLeft to int) */
+        var paused = false, idleTimer = null;
 
-        function half() { return clientsGrid.scrollWidth / 2; }
-        function pause() {
+        /* exact offset where the second set begins = perfectly seamless wrap point */
+        function loopWidth() { return firstClone.offsetLeft - firstOriginal.offsetLeft; }
+
+        function scheduleResume() {
+          clearTimeout(idleTimer);
+          idleTimer = setTimeout(function () {
+            pos = clientsGrid.scrollLeft; /* sync to where the user actually left it */
+            paused = false;
+          }, 1800);
+        }
+        function onInteract() {
           paused = true;
-          pos = clientsGrid.scrollLeft; /* continue from where the user left it */
-          clearTimeout(resumeTimer);
-          resumeTimer = setTimeout(function () { paused = false; }, 2200);
+          scheduleResume();
         }
 
-        /* user interaction pauses the auto-scroll, then it resumes */
-        ['touchstart', 'pointerdown', 'wheel'].forEach(function (ev) {
-          clientsGrid.addEventListener(ev, pause, { passive: true });
-        });
+        clientsGrid.addEventListener('touchstart', onInteract, { passive: true });
+        clientsGrid.addEventListener('touchmove', onInteract, { passive: true });
+        clientsGrid.addEventListener('wheel', onInteract, { passive: true });
+        /* keep it paused until momentum fully settles, then resume from rest */
+        clientsGrid.addEventListener('scroll', function () { if (paused) scheduleResume(); }, { passive: true });
 
         function tick() {
           if (!paused) {
             pos += SPEED;
-            if (pos >= half()) pos -= half();
+            var lw = loopWidth();
+            if (lw > 0 && pos >= lw) pos -= lw;
             clientsGrid.scrollLeft = pos;
           }
           requestAnimationFrame(tick);
