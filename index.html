@@ -1178,6 +1178,30 @@
       fill: var(--white);
     }
 
+    /* Copy-email toast */
+    .copy-toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 12px);
+      background: var(--text-1);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 100px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), 0 0 0 4px oklch(60% 0.12 45 / 0.18);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 500;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .copy-toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
     footer nav a {
       font-size: 13px;
       color: rgba(255, 255, 255, 0.6);
@@ -2075,6 +2099,28 @@
           card.addEventListener('mouseleave', function () {
             card.style.transform = '';
           });
+        });
+      }
+
+      /* COPY EMAIL ON CLICK (mailto still fires for those with a mail app) */
+      var emailLink = document.querySelector('.footer-social[href^="mailto:"]');
+      if (emailLink) {
+        var toast;
+        emailLink.addEventListener('click', function () {
+          var addr = emailLink.getAttribute('href').replace('mailto:', '');
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(addr).catch(function () {});
+          }
+          if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'copy-toast';
+            document.body.appendChild(toast);
+          }
+          toast.textContent = 'Email copied — ' + addr;
+          void toast.offsetWidth;
+          toast.classList.add('show');
+          clearTimeout(toast._t);
+          toast._t = setTimeout(function () { toast.classList.remove('show'); }, 2600);
         });
       }
 
