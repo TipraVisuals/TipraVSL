@@ -1149,6 +1149,12 @@
       margin: 0;
     }
 
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
     .footer-social {
       display: inline-flex;
       align-items: center;
@@ -1158,7 +1164,6 @@
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
-      margin-top: 16px;
       transition: background 0.2s ease, transform 0.2s ease;
     }
 
@@ -1200,6 +1205,10 @@
       .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
+      }
+
+      .footer-socials {
+        justify-content: center;
       }
 
       .footer-copy {
@@ -1797,9 +1806,14 @@
       <div class="footer-grid">
         <div>
           <p class="footer-brand">Tipra Visuals</p>
-          <a class="footer-social" href="https://x.com/Tipra_" target="_blank" rel="noopener" aria-label="Tipra on X (Twitter)">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+          <div class="footer-socials">
+            <a class="footer-social" href="https://x.com/Tipra_" target="_blank" rel="noopener" aria-label="Tipra on X (Twitter)">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a class="footer-social" href="mailto:arpitv.tip@gmail.com" aria-label="Email Tipra Visuals">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.236-8 5-8-5V6l8 5 8-5v2.236Z"/></svg>
+            </a>
+          </div>
         </div>
         <nav>
           <a href="#testimonials">Results</a>
